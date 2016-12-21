@@ -135,6 +135,19 @@ def set_phaser():
         if code_3_model[4] == 1:
             return sirens.Code_3.Vcon.phaser()
 
+def set_aux1():
+    if brand_name == CODE_3:
+        if code_3_model[0] == 1:
+            return dead
+        if code_3_model[1] == 1:
+            return dead
+        if code_3_model[2] == 1:
+            return sirens.Code_3.Mastercom_B.hilo()
+        if code_3_model[3] == 1:
+            return dead
+        if code_3_model[4] == 1:
+            return dead
+
 brand_name = set_brand()
 
 
@@ -183,6 +196,7 @@ wail = pygame.mixer.Sound(set_wail())
 m_wail = pygame.mixer.Sound(set_wail())
 yelp = pygame.mixer.Sound(set_yelp())
 phaser = pygame.mixer.Sound(set_phaser())
+aux1 = pygame.mixer.Sound(set_aux1())
 
 # def update_lcd():
 #     display.lcd_clear()
@@ -264,15 +278,19 @@ def play_horn(channel):
 def play_phaser(channel):
     global phaser_playing
     if GPIO.input(pin.phaser) and not phaser_playing:
-
-        phaser.play(-1)
-        wail.set_volume(0.25)
-        phaser_playing = True
+        if auxiliary:
+            aux1.play(-1)
+        else:
+            phaser.play(-1)
+            wail.set_volume(0.25)
+            phaser_playing = True
     else:
-
-        phaser.stop()
-        wail.set_volume(1)
-        phaser_playing = False
+        if auxiliary:
+            aux1.stop()
+        else:
+            phaser.stop()
+            wail.set_volume(1)
+            phaser_playing = False
 
 
 def play_yelp(channel):
@@ -305,7 +323,7 @@ def play_manual_wail(channel):
 
 def next_selection(channel):
     if GPIO.input(pin.next):
-        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name
+        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1
 
         if brand_name == FED_SIG:
             fed_sig_model.rotate(1)
@@ -325,6 +343,8 @@ def next_selection(channel):
         m_wail = pygame.mixer.Sound(set_wail())
         yelp = pygame.mixer.Sound(set_yelp())
         phaser = pygame.mixer.Sound(set_phaser())
+        aux1 = pygame.mixer.Sound(set_aux1())
+
         # lcd_string = set_lcd()
         # update_lcd()
 
@@ -334,7 +354,7 @@ def next_selection(channel):
 
 def prev_selection(channel):
     if GPIO.input(pin.previous):
-        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name
+        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1
         if brand_name == FED_SIG:
             fed_sig_model.rotate(-1)
             print('rotated fed sig -1')
@@ -353,6 +373,8 @@ def prev_selection(channel):
         m_wail = pygame.mixer.Sound(set_wail())
         yelp = pygame.mixer.Sound(set_yelp())
         phaser = pygame.mixer.Sound(set_phaser())
+        aux1 = pygame.mixer.Sound(set_aux1())
+
         # lcd_string = set_lcd()
         # update_lcd()
         set_lcd()
@@ -363,7 +385,7 @@ def next_brand(channel):
         brand.rotate(1)
         # lcd_string = set_lcd()
         # update_lcd()
-        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name
+        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1
         brand_name = set_brand()
 
         wail.stop()
@@ -376,7 +398,7 @@ def next_brand(channel):
         m_wail = pygame.mixer.Sound(set_wail())
         yelp = pygame.mixer.Sound(set_yelp())
         phaser = pygame.mixer.Sound(set_phaser())
-
+        aux1 = pygame.mixer.Sound(set_aux1())
         set_lcd()
         set_brand()
         print(brand)
