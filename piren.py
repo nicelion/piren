@@ -23,9 +23,9 @@ display = lcddriver.lcd()
 
 dead = 'dead.wav'
 
-brand = deque([1, 0, 0, 0, 0, 0])
+brand = deque([1])
 fed_sig_model = deque([1, 0, 0])
-code_3_model = deque([1, 0])
+code_3_model = deque([1, 0, 0, 0, 0])
 
 auxiliary = False
 
@@ -66,6 +66,13 @@ def set_wail():
             return sirens.Code_3._3932_Scorpion.wail()
         if code_3_model[1] == 1:
             return sirens.Code_3.Mastercom.wail()
+        if code_3_model[2] == 1:
+            return sirens.Code_3.Mastercom_B.wail()
+        if code_3_model[3] == 1:
+            return sirens.Code_3.RLS.wail()
+        if code_3_model[4] == 1:
+            return sirens.Code_3.Vcon.wail()
+
 
 def set_horn():
     if brand_name == FED_SIG:
@@ -80,6 +87,12 @@ def set_horn():
             return sirens.Code_3._3932_Scorpion.horn()
         if code_3_model[1] == 1:
             return sirens.Code_3.Mastercom.horn()
+        if code_3_model[2] == 1:
+            return sirens.Code_3.Mastercom_B.horn()
+        if code_3_model[3] == 1:
+            return sirens.Code_3.RLS.horn()
+        if code_3_model[4] == 1:
+            return sirens.Code_3.Vcon.horn()
 
 def set_yelp():
     if brand_name == FED_SIG:
@@ -94,6 +107,12 @@ def set_yelp():
             return sirens.Code_3._3932_Scorpion.yelp()
         if code_3_model[1] == 1:
             return sirens.Code_3.Mastercom.yelp()
+        if code_3_model[2] == 1:
+            return sirens.Code_3.Mastercom_B.yelp()
+        if code_3_model[3] == 1:
+            return sirens.Code_3.RLS.yelp()
+        if code_3_model[4] == 1:
+            return sirens.Code_3.Vcon.yelp()
 
 
 def set_phaser():
@@ -109,6 +128,12 @@ def set_phaser():
             return sirens.Code_3._3932_Scorpion.phaser()
         if code_3_model[1] == 1:
             return sirens.Code_3.Mastercom.phaser()
+        if code_3_model[2] == 1:
+            return sirens.Code_3.Mastercom_B.phaser()
+        if code_3_model[3] == 1:
+            return sirens.Code_3.RLS.phaser()
+        if code_3_model[4] == 1:
+            return sirens.Code_3.Vcon.phaser()
 
 brand_name = set_brand()
 
@@ -141,6 +166,13 @@ def set_lcd():
             return display.lcd_display_string(" 3932  Scorpion", 2)
         if code_3_model[1] == 1:
             return display.lcd_display_string("   Mastercom", 2)
+        if code_3_model[2] == 1:
+            return display.lcd_display_string("  Mastercom B", 2)
+        if code_3_model[3] == 1:
+            return display.lcd_display_string("      RLS", 2)
+        if code_3_model[4] == 1:
+            return display.lcd_display_string("      Vcon", 2)
+
 
 
 
