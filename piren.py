@@ -21,7 +21,9 @@ pygame.init()
 pygame.mixer.init()
 display = lcddriver.lcd()
 
-brand = deque([1, 0,])
+dead = 'dead.wav'
+
+brand = deque([1, 0, 0, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0])
 code_3_model = deque([1, 0])
 
