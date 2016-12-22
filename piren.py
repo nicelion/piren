@@ -142,24 +142,26 @@ def set_aux1():
         if code_3_model[1] == 1:
             return [dead, False]
         if code_3_model[2] == 1:
+            print('actuals')
             return [sirens.Code_3.Mastercom_B.hilo(), True]
         if code_3_model[3] == 1:
             return [dead, False]
         if code_3_model[4] == 1:
             return [dead, False]
     if brand_name == FED_SIG:
-        if code_3_model[0] == 1:
+        if fed_sig_model[0] == 1:
             return [dead, False]
-        if code_3_model[1] == 1:
+        if fed_sig_model[1] == 1:
             return [dead, False]
-        if code_3_model[2] == 1:
+        if fed_sig_model[2] == 1:
+            return [sirens.Federal_Signal.PA20.yelp2(), True]
+        if fed_sig_model[3] == 1:
             return [dead, False]
-        if code_3_model[3] == 1:
-            return [dead, False]
-        if code_3_model[4] == 1:
+        if fed_sig_model[4] == 1:
             return [dead, False]
 
 def set_aux2():
+    print('brand: ' + str(brand_name) + ' model: ' + str(fed_sig_model))
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return [dead, False]
@@ -171,16 +173,16 @@ def set_aux2():
             return [dead, False]
         if code_3_model[4] == 1:
             return [dead, False]
-    if brand_name == FED_SIG:
-        if code_3_model[0] == 1:
+    elif brand_name == FED_SIG:
+        if fed_sig_model[0] == 1:
             return [dead, False]
-        if code_3_model[1] == 1:
+        elif fed_sig_model[1] == 1:
             return [dead, False]
-        if code_3_model[2] == 1:
+        elif fed_sig_model[2] == 1:
+            return [sirens.Federal_Signal.PA20.yelp3(), True]
+        elif fed_sig_model[3] == 1:
             return [dead, False]
-        if code_3_model[3] == 1:
-            return [dead, False]
-        if code_3_model[4] == 1:
+        elif fed_sig_model[4] == 1:
             return [dead, False]
 brand_name = set_brand()
 
@@ -439,7 +441,7 @@ def next_brand(channel):
         brand.rotate(1)
         # lcd_string = set_lcd()
         # update_lcd()
-        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable
+        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable, aux2, aux2_is_usable
         brand_name = set_brand()
 
         wail.stop()
@@ -454,8 +456,15 @@ def next_brand(channel):
         phaser = pygame.mixer.Sound(set_phaser())
         aux1 = pygame.mixer.Sound(set_aux1()[0])
         aux1_is_usable = set_aux1()[1]
+
+        aux2 = pygame.mixer.Sound(set_aux2()[0])
+        aux2_is_usable = set_aux2()[1]
         set_lcd()
         set_brand()
+
+
+
+
         print(brand)
 
 def prev_brand(channel):
@@ -464,7 +473,7 @@ def prev_brand(channel):
         brand.rotate(-1)
         # lcd_string = set_lcd()
         # update_lcd()
-        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name
+        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux2, aux1_is_usable, aux2_is_usable
         brand_name = set_brand()
 
         wail.stop()
@@ -477,7 +486,11 @@ def prev_brand(channel):
         m_wail = pygame.mixer.Sound(set_wail())
         yelp = pygame.mixer.Sound(set_yelp())
         phaser = pygame.mixer.Sound(set_phaser())
+        aux1 = pygame.mixer.Sound(set_aux1()[0])
+        aux1_is_usable = set_aux1()[1]
 
+        aux2 = pygame.mixer.Sound(set_aux2()[0])
+        aux2_is_usable = set_aux2()[1]
         set_lcd()
         set_brand()
         print(brand)
