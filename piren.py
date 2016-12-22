@@ -88,7 +88,8 @@ def set_wail():
             return sirens.Federal_Signal.SSP3000b.wail()
         if fed_sig_model[10] == 1:
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.wail()
-
+        if fed_sig_model[11] == 1:
+            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.wail()
 def set_horn():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -124,6 +125,8 @@ def set_horn():
             return sirens.Federal_Signal.SSP3000b.horn()
         if fed_sig_model[10] == 1:
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.horn()
+        if fed_sig_model[11] == 1:
+            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -160,6 +163,8 @@ def set_yelp():
             return sirens.Federal_Signal.SSP3000b.yelp()
         if fed_sig_model[10] == 1:
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.yelp()
+        if fed_sig_model[11] == 1:
+            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -196,6 +201,8 @@ def set_phaser():
             return sirens.Federal_Signal.SSP3000b.phaser()
         if fed_sig_model[10] == 1:
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.phaser()
+        if fed_sig_model[11] == 1:
+            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -268,7 +275,76 @@ def set_aux2():
             return [dead, False]
         if fed_sig_model[10] == 1:
             return [dead, False]
-
+def set_aux3():
+    if brand_name == CODE_3:
+        if code_3_model[0] == 1:
+            return [dead, False]
+        if code_3_model[1] == 1:
+            return [dead, False]
+        if code_3_model[2] == 1:
+            return [dead, False]
+        if code_3_model[3] == 1:
+            return [dead, False]
+        if code_3_model[4] == 1:
+            return [dead, False]
+    elif brand_name == FED_SIG:
+        if fed_sig_model[0] == 1:
+            return [dead, False]
+        elif fed_sig_model[1] == 1:
+            return [dead, False]
+        elif fed_sig_model[2] == 1:
+            return [dead, False]
+        elif fed_sig_model[3] == 1:
+            return [dead, False]
+        elif fed_sig_model[4] == 1:
+            return [dead, False]
+        if fed_sig_model[5] == 1:
+            return [dead, False]
+        if fed_sig_model[6] == 1:
+            return [dead, False]
+        if fed_sig_model[7] == 1:
+            return [dead, False]
+        if fed_sig_model[8] == 1:
+            return [dead, False]
+        if fed_sig_model[9] == 1:
+            return [dead, False]
+        if fed_sig_model[10] == 1:
+            return [dead, False]
+def set_aux4():
+    if brand_name == CODE_3:
+        if code_3_model[0] == 1:
+            return [dead, False]
+        if code_3_model[1] == 1:
+            return [dead, False]
+        if code_3_model[2] == 1:
+            return [dead, False]
+        if code_3_model[3] == 1:
+            return [dead, False]
+        if code_3_model[4] == 1:
+            return [dead, False]
+    elif brand_name == FED_SIG:
+        if fed_sig_model[0] == 1:
+            return [dead, False]
+        elif fed_sig_model[1] == 1:
+            return [dead, False]
+        elif fed_sig_model[2] == 1:
+            return [dead, False]
+        elif fed_sig_model[3] == 1:
+            return [dead, False]
+        elif fed_sig_model[4] == 1:
+            return [dead, False]
+        if fed_sig_model[5] == 1:
+            return [dead, False]
+        if fed_sig_model[6] == 1:
+            return [dead, False]
+        if fed_sig_model[7] == 1:
+            return [dead, False]
+        if fed_sig_model[8] == 1:
+            return [dead, False]
+        if fed_sig_model[9] == 1:
+            return [dead, False]
+        if fed_sig_model[10] == 1:
+            return [dead, False]
 
 brand_name = set_brand()
 
@@ -334,8 +410,10 @@ aux1 = pygame.mixer.Sound(set_aux1()[0])
 aux1_is_usable = set_aux1()[1]
 aux2 = pygame.mixer.Sound(set_aux2()[0])
 aux2_is_usable = set_aux2()[1]
-
-
+aux3 = pygame.mixer.Sound(set_aux3()[0])
+aux3_is_usable = set_aux3()[1]
+aux4 = pygame.mixer.Sound(set_aux4()[0])
+aux4_is_usable = set_aux4()[1]
 
 # GPIO Pin Numbers
 class pin:
@@ -465,7 +543,7 @@ def play_manual_wail(channel):
 def next_selection(channel):
     if GPIO.input(pin.next):
         global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable, aux2, aux2_is_usable
-
+        global aux3, aux3_is_usable, aux4, aux4_is_usable
         if brand_name == FED_SIG:
             fed_sig_model.rotate(1)
             print('rotated fed sig 1')
@@ -489,6 +567,10 @@ def next_selection(channel):
         aux1_is_usable = set_aux1()[1]
         aux2 = pygame.mixer.Sound(set_aux2()[0])
         aux2_is_usable = set_aux2()[1]
+        aux3 = pygame.mixer.Sound(set_aux3()[0])
+        aux3_is_usable = set_aux3()[1]
+        aux4 = pygame.mixer.Sound(set_aux4()[0])
+        aux4_is_usable = set_aux4()[1]
 
         set_lcd()
 
@@ -497,6 +579,7 @@ def next_selection(channel):
 def prev_selection(channel):
     if GPIO.input(pin.previous):
         global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable, aux2, aux2_is_usable
+        global aux3, aux3_is_usable, aux4, aux4_is_usable
         if brand_name == FED_SIG:
             fed_sig_model.rotate(-1)
             print('rotated fed sig -1')
@@ -517,9 +600,12 @@ def prev_selection(channel):
 
         aux1 = pygame.mixer.Sound(set_aux1()[0])
         aux1_is_usable = set_aux1()[1]
-
         aux2 = pygame.mixer.Sound(set_aux2()[0])
         aux2_is_usable = set_aux2()[1]
+        aux3 = pygame.mixer.Sound(set_aux3()[0])
+        aux3_is_usable = set_aux3()[1]
+        aux4 = pygame.mixer.Sound(set_aux4()[0])
+        aux4_is_usable = set_aux4()[1]
 
         set_lcd()
 
@@ -528,6 +614,7 @@ def next_brand(channel):
         brand.rotate(1)
 
         global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable, aux2, aux2_is_usable
+        global aux3, aux3_is_usable, aux4, aux4_is_usable
         brand_name = set_brand()
 
         wail.stop()
@@ -540,11 +627,17 @@ def next_brand(channel):
         m_wail = pygame.mixer.Sound(set_wail())
         yelp = pygame.mixer.Sound(set_yelp())
         phaser = pygame.mixer.Sound(set_phaser())
+
         aux1 = pygame.mixer.Sound(set_aux1()[0])
         aux1_is_usable = set_aux1()[1]
-
         aux2 = pygame.mixer.Sound(set_aux2()[0])
         aux2_is_usable = set_aux2()[1]
+        aux3 = pygame.mixer.Sound(set_aux3()[0])
+        aux3_is_usable = set_aux3()[1]
+        aux4 = pygame.mixer.Sound(set_aux4()[0])
+        aux4_is_usable = set_aux4()[1]
+
+
         set_lcd()
         set_brand()
 
@@ -557,7 +650,8 @@ def prev_brand(channel):
     if GPIO.input(pin.prev_brand):
         brand.rotate(-1)
 
-        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux2, aux1_is_usable, aux2_is_usable
+        global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable, aux2, aux2_is_usable
+        global aux3, aux3_is_usable, aux4, aux4_is_usable
         brand_name = set_brand()
 
         wail.stop()
@@ -570,11 +664,16 @@ def prev_brand(channel):
         m_wail = pygame.mixer.Sound(set_wail())
         yelp = pygame.mixer.Sound(set_yelp())
         phaser = pygame.mixer.Sound(set_phaser())
+
         aux1 = pygame.mixer.Sound(set_aux1()[0])
         aux1_is_usable = set_aux1()[1]
-
         aux2 = pygame.mixer.Sound(set_aux2()[0])
         aux2_is_usable = set_aux2()[1]
+        aux3 = pygame.mixer.Sound(set_aux3()[0])
+        aux3_is_usable = set_aux3()[1]
+        aux4 = pygame.mixer.Sound(set_aux4()[0])
+        aux4_is_usable = set_aux4()[1]
+
         set_lcd()
         set_brand()
         print(brand)
