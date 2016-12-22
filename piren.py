@@ -23,7 +23,7 @@ display = lcddriver.lcd()
 
 dead = 'dead.wav'
 
-brand = deque([1s])
+brand = deque([1,0])
 fed_sig_model = deque([1, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 
@@ -56,11 +56,11 @@ def set_brand():
 def set_wail():
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.SSP3000b_w_Rumbler.wail()
+            return sirens.Federal_Signal.EQ2B.wail()
         if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.SSP3000b.wail()
+            return sirens.Federal_Signal.MS4000.wail()
         if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.wail()
+            return sirens.Federal_Signal.PA20.wail()
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.wail()
@@ -77,11 +77,11 @@ def set_wail():
 def set_horn():
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.SSP3000b_w_Rumbler.horn()
+            return sirens.Federal_Signal.EQ2B.horn()
         if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.SSP3000b.horn()
+            return sirens.Federal_Signal.MS4000.horn()
         if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.horn()
+            return sirens.Federal_Signal.PA20.horn()
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.horn()
@@ -97,11 +97,11 @@ def set_horn():
 def set_yelp():
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.SSP3000b_w_Rumbler.yelp()
+            return sirens.Federal_Signal.EQ2B.yelp()
         if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.SSP3000b.yelp()
+            return sirens.Federal_Signal.MS4000.yelp()
         if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.yelp()
+            return sirens.Federal_Signal.PA20.yelp()
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.yelp()
@@ -118,11 +118,11 @@ def set_yelp():
 def set_phaser():
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.SSP3000b_w_Rumbler.phaser()
+            return sirens.Federal_Signal.EQ2B.phaser()
         if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.SSP3000b.phaser()
+            return sirens.Federal_Signal.MS4000.phaser()
         if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.phaser()
+            return sirens.Federal_Signal.PA20.hilo()
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.phaser()
@@ -147,6 +147,17 @@ def set_aux1():
             return [dead, False]
         if code_3_model[4] == 1:
             return [dead, False]
+    if brand_name == FED_SIG:
+        if code_3_model[0] == 1:
+            return [dead, False]
+        if code_3_model[1] == 1:
+            return [dead, False]
+        if code_3_model[2] == 1:
+            return [dead, False]
+        if code_3_model[3] == 1:
+            return [dead, False]
+        if code_3_model[4] == 1:
+            return [dead, False]
 
 def set_aux2():
     if brand_name == CODE_3:
@@ -156,6 +167,17 @@ def set_aux2():
             return [dead, False]
         if code_3_model[2] == 1:
             return [sirens.Code_3.Mastercom_B.hylo(), True]
+        if code_3_model[3] == 1:
+            return [dead, False]
+        if code_3_model[4] == 1:
+            return [dead, False]
+    if brand_name == FED_SIG:
+        if code_3_model[0] == 1:
+            return [dead, False]
+        if code_3_model[1] == 1:
+            return [dead, False]
+        if code_3_model[2] == 1:
+            return [dead, False]
         if code_3_model[3] == 1:
             return [dead, False]
         if code_3_model[4] == 1:
@@ -181,22 +203,22 @@ def set_lcd():
 
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            display.lcd_display_string("SSP3000b w Rumbler", 2)
+            display.lcd_display_string("      EQ2B", 2)
         if fed_sig_model[1] == 1:
-            display.lcd_display_string("    SSP3000b", 2)
+            display.lcd_display_string("    MS4000", 2)
         if fed_sig_model[2] == 1:
-            return display.lcd_display_string("Touchmaster Delta", 2)
+            display.lcd_display_string("      PA20", 2)
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
-            return display.lcd_display_string(" 3932  Scorpion", 2)
+            display.lcd_display_string(" 3932  Scorpion", 2)
         if code_3_model[1] == 1:
-            return display.lcd_display_string("   Mastercom", 2)
+            display.lcd_display_string("   Mastercom", 2)
         if code_3_model[2] == 1:
-            return display.lcd_display_string("  Mastercom B", 2)
+            display.lcd_display_string("  Mastercom B", 2)
         if code_3_model[3] == 1:
-            return display.lcd_display_string("      RLS", 2)
+            display.lcd_display_string("      RLS", 2)
         if code_3_model[4] == 1:
-            return display.lcd_display_string("      Vcon", 2)
+            display.lcd_display_string("      Vcon", 2)
 
 
 

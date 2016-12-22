@@ -92,9 +92,9 @@ class Federal_Signal:
 
     class PA20:
         def horn():
-            return 'sirens/Federal Signal/PA20/pa20horn.wav'
+            return 'dead.wav'
         def wail():
-            return 'sirens/Federal Signal/PA20/pa20horn.wav'
+            return 'sirens/Federal Signal/PA20/pa20wail.wav'
         def yelp():
             return 'sirens/Federal Signal/PA20/pa20yelp.wav'
         def yelp2():
