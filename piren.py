@@ -86,6 +86,8 @@ def set_wail():
             return sirens.Federal_Signal.SS2000SM.wail()
         if fed_sig_model[9] == 1:
             return sirens.Federal_Signal.SSP3000b.wail()
+        if fed_sig_model[10] == 1:
+            return sirens.Federal_Signal.SSP3000b_w_Rumbler.wail()
 
 def set_horn():
     if brand_name == CODE_3:
@@ -120,6 +122,8 @@ def set_horn():
             return sirens.Federal_Signal.SS2000SM.horn()
         if fed_sig_model[9] == 1:
             return sirens.Federal_Signal.SSP3000b.horn()
+        if fed_sig_model[10] == 1:
+            return sirens.Federal_Signal.SSP3000b_w_Rumbler.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -154,6 +158,8 @@ def set_yelp():
             return sirens.Federal_Signal.SS2000SM.yelp()
         if fed_sig_model[9] == 1:
             return sirens.Federal_Signal.SSP3000b.yelp()
+        if fed_sig_model[10] == 1:
+            return sirens.Federal_Signal.SSP3000b_w_Rumbler.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -188,6 +194,8 @@ def set_phaser():
             return sirens.Federal_Signal.SS2000SM.phaser()
         if fed_sig_model[9] == 1:
             return sirens.Federal_Signal.SSP3000b.phaser()
+        if fed_sig_model[10] == 1:
+            return sirens.Federal_Signal.SSP3000b_w_Rumbler.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -223,6 +231,8 @@ def set_aux1():
             return [sirens.Federal_Signal.SS2000SM.hilo(), False]
         if fed_sig_model[9] == 1:
             return [sirens.Federal_Signal.SSP3000b.hilo(), False]
+        if fed_sig_model[10] == 1:
+            return [dead, False]
 def set_aux2():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -255,6 +265,8 @@ def set_aux2():
         if fed_sig_model[8] == 1:
             return [dead, False]
         if fed_sig_model[9] == 1:
+            return [dead, False]
+        if fed_sig_model[10] == 1:
             return [dead, False]
 
 
@@ -309,7 +321,8 @@ def set_lcd():
             display.lcd_display_string("    SS2000SM", 2)
         if fed_sig_model[9] == 1:
             display.lcd_display_string("    SSP3000b", 2)
-
+        if fed_sig_model[10] == 1:
+            display.lcd_display_string("SSP3000b w Rumbler", 2)
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
