@@ -24,7 +24,7 @@ display = lcddriver.lcd()
 dead = 'dead.wav'
 
 brand = deque([1,0])
-fed_sig_model = deque([1, 0, 0])
+fed_sig_model = deque([1, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 
 auxiliary = False
@@ -54,13 +54,6 @@ def set_brand():
 
 
 def set_wail():
-    if brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.EQ2B.wail()
-        if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.MS4000.wail()
-        if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.PA20.wail()
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.wail()
@@ -72,16 +65,21 @@ def set_wail():
             return sirens.Code_3.RLS.wail()
         if code_3_model[4] == 1:
             return sirens.Code_3.Vcon.wail()
+    if brand_name == FED_SIG:
+        if fed_sig_model[0] == 1:
+            return sirens.Federal_Signal.EQ2B.wail()
+        if fed_sig_model[1] == 1:
+            return sirens.Federal_Signal.MS4000.wail()
+        if fed_sig_model[2] == 1:
+            return sirens.Federal_Signal.PA20.wail()
+        if fed_sig_model[3] == 1:
+            return sirens.Federal_Signal.PA150.wail()
+        if fed_sig_model[4] == 1:
+             return sirens.Federal_Signal.PA300.wail()
+
 
 
 def set_horn():
-    if brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.EQ2B.horn()
-        if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.MS4000.horn()
-        if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.PA20.horn()
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.horn()
@@ -93,15 +91,19 @@ def set_horn():
             return sirens.Code_3.RLS.horn()
         if code_3_model[4] == 1:
             return sirens.Code_3.Vcon.horn()
-
-def set_yelp():
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.EQ2B.yelp()
+            return sirens.Federal_Signal.EQ2B.horn()
         if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.MS4000.yelp()
+            return sirens.Federal_Signal.MS4000.horn()
         if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.PA20.yelp()
+            return sirens.Federal_Signal.PA20.horn()
+        if fed_sig_model[3] == 1:
+            return dead
+        if fed_sig_model[4] == 1:
+             return sirens.Federal_Signal.PA300.horn()
+
+def set_yelp():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.yelp()
@@ -113,16 +115,19 @@ def set_yelp():
             return sirens.Code_3.RLS.yelp()
         if code_3_model[4] == 1:
             return sirens.Code_3.Vcon.yelp()
-
-
-def set_phaser():
     if brand_name == FED_SIG:
         if fed_sig_model[0] == 1:
-            return sirens.Federal_Signal.EQ2B.phaser()
+            return sirens.Federal_Signal.EQ2B.yelp()
         if fed_sig_model[1] == 1:
-            return sirens.Federal_Signal.MS4000.phaser()
+            return sirens.Federal_Signal.MS4000.yelp()
         if fed_sig_model[2] == 1:
-            return sirens.Federal_Signal.PA20.hilo()
+            return sirens.Federal_Signal.PA20.yelp()
+        if fed_sig_model[3] == 1:
+            return sirens.Federal_Signal.PA150.yelp()
+        if fed_sig_model[4] == 1:
+             return sirens.Federal_Signal.PA300.yelp()
+
+def set_phaser():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.phaser()
@@ -134,6 +139,17 @@ def set_phaser():
             return sirens.Code_3.RLS.phaser()
         if code_3_model[4] == 1:
             return sirens.Code_3.Vcon.phaser()
+    if brand_name == FED_SIG:
+        if fed_sig_model[0] == 1:
+            return sirens.Federal_Signal.EQ2B.phaser()
+        if fed_sig_model[1] == 1:
+            return sirens.Federal_Signal.MS4000.phaser()
+        if fed_sig_model[2] == 1:
+            return sirens.Federal_Signal.PA20.hilo()
+        if fed_sig_model[3] == 1:
+            return sirens.Federal_Signal.PA150.hilo()
+        if fed_sig_model[4] == 1:
+            return sirens.Federal_Signal.PA300.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -158,10 +174,9 @@ def set_aux1():
         if fed_sig_model[3] == 1:
             return [dead, False]
         if fed_sig_model[4] == 1:
-            return [dead, False]
+            return [sirens.Federal_Signal.PA300.hilo(), True]
 
 def set_aux2():
-    print('brand: ' + str(brand_name) + ' model: ' + str(fed_sig_model))
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return [dead, False]
@@ -203,13 +218,6 @@ def set_lcd():
     elif brand_name == HORNS:
         display.lcd_display_string('Horns', 1)
 
-    if brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            display.lcd_display_string("      EQ2B", 2)
-        if fed_sig_model[1] == 1:
-            display.lcd_display_string("    MS4000", 2)
-        if fed_sig_model[2] == 1:
-            display.lcd_display_string("      PA20", 2)
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             display.lcd_display_string(" 3932  Scorpion", 2)
@@ -221,7 +229,17 @@ def set_lcd():
             display.lcd_display_string("      RLS", 2)
         if code_3_model[4] == 1:
             display.lcd_display_string("      Vcon", 2)
-
+    if brand_name == FED_SIG:
+        if fed_sig_model[0] == 1:
+            display.lcd_display_string("      EQ2B", 2)
+        if fed_sig_model[1] == 1:
+            display.lcd_display_string("    MS4000", 2)
+        if fed_sig_model[2] == 1:
+            display.lcd_display_string("      PA20", 2)
+        if fed_sig_model[3] == 1:
+            display.lcd_display_string("     PA150", 2)
+        if fed_sig_model[4] == 1:
+            display.lcd_display_string("     PA640", 2)
 
 
 
@@ -524,6 +542,8 @@ def startup():
     display.lcd_display_string('   Welcome to', 1)
     display.lcd_display_string('     Piren', 2)
 
+    print('Welcome to the Piren Project \nby Ian Thompson \n \nSirens provided by crazytaxi1000 from LCPDFR.com!')
+
     GPIO.output(pin.siren_led, GPIO.HIGH)
     GPIO.output(pin.aux_led, GPIO.HIGH)
     sleep(0.1)
@@ -547,6 +567,7 @@ def startup():
     GPIO.output(pin.aux_led, GPIO.LOW)
     GPIO.output(pin.siren_led, GPIO.LOW)
     display.lcd_clear()
+
 
 try:
     print('Piren Started')
