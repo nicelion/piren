@@ -84,6 +84,8 @@ def set_wail():
             return sirens.Federal_Signal.SS200_Mini.wail()
         if fed_sig_model[8] == 1:
             return sirens.Federal_Signal.SS2000SM.wail()
+        if fed_sig_model[9] == 1:
+            return sirens.Federal_Signal.SSP3000b.wail()
 
 def set_horn():
     if brand_name == CODE_3:
@@ -116,6 +118,8 @@ def set_horn():
             return sirens.Federal_Signal.SS200_Mini.horn()
         if fed_sig_model[8] == 1:
             return sirens.Federal_Signal.SS2000SM.horn()
+        if fed_sig_model[9] == 1:
+            return sirens.Federal_Signal.SSP3000b.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -148,6 +152,8 @@ def set_yelp():
             return sirens.Federal_Signal.SS200_Mini.yelp()
         if fed_sig_model[8] == 1:
             return sirens.Federal_Signal.SS2000SM.yelp()
+        if fed_sig_model[9] == 1:
+            return sirens.Federal_Signal.SSP3000b.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -180,6 +186,8 @@ def set_phaser():
             return dead
         if fed_sig_model[8] == 1:
             return sirens.Federal_Signal.SS2000SM.phaser()
+        if fed_sig_model[9] == 1:
+            return sirens.Federal_Signal.SSP3000b.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -213,7 +221,8 @@ def set_aux1():
             return [dead, False]
         if fed_sig_model[8] == 1:
             return [sirens.Federal_Signal.SS2000SM.hilo(), False]
-
+        if fed_sig_model[9] == 1:
+            return [sirens.Federal_Signal.SSP3000b.hilo(), False]
 def set_aux2():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -244,6 +253,8 @@ def set_aux2():
         if fed_sig_model[7] == 1:
             return [dead, False]
         if fed_sig_model[8] == 1:
+            return [dead, False]
+        if fed_sig_model[9] == 1:
             return [dead, False]
 
 
@@ -296,6 +307,9 @@ def set_lcd():
             display.lcd_display_string("   SS200 Mini", 2)
         if fed_sig_model[8] == 1:
             display.lcd_display_string("    SS2000SM", 2)
+        if fed_sig_model[9] == 1:
+            display.lcd_display_string("    SSP3000b", 2)
+
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
@@ -309,10 +323,7 @@ aux2 = pygame.mixer.Sound(set_aux2()[0])
 aux2_is_usable = set_aux2()[1]
 
 
-# def update_lcd():
-#     display.lcd_clear()
-#     display.lcd_display_string(lcd_string[0], 1) # Write line of text to first line of display
-#     display.lcd_display_string(lcd_string[1], 2) # Write line of text to second line of display
+
 # GPIO Pin Numbers
 class pin:
     # Sets up the pin numbers for what each button will do.
@@ -346,7 +357,7 @@ manual_wail_playing = False
 
 
 
-
+# GPIO Setup
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin.wail, GPIO.IN)
 GPIO.setup(pin.horn, GPIO.IN)
@@ -466,9 +477,6 @@ def next_selection(channel):
         aux2 = pygame.mixer.Sound(set_aux2()[0])
         aux2_is_usable = set_aux2()[1]
 
-        # lcd_string = set_lcd()
-        # update_lcd()
-
         set_lcd()
 
 
@@ -482,8 +490,7 @@ def prev_selection(channel):
         elif brand_name == CODE_3:
             code_3_model.rotate(-1)
             print('rotated code 3 -1')
-        # print(setup.fed_sig_model)
-        # if wail_playing or horn_playing or manual_wail_playing or yelp_playing or phaser_playing:
+
         wail.stop()
         horn.stop()
         m_wail.stop()
@@ -501,16 +508,12 @@ def prev_selection(channel):
         aux2 = pygame.mixer.Sound(set_aux2()[0])
         aux2_is_usable = set_aux2()[1]
 
-        # lcd_string = set_lcd()
-        # update_lcd()
         set_lcd()
 
 def next_brand(channel):
-    # global lcd_string
     if GPIO.input(pin.next_brand):
         brand.rotate(1)
-        # lcd_string = set_lcd()
-        # update_lcd()
+
         global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux1_is_usable, aux2, aux2_is_usable
         brand_name = set_brand()
 
@@ -538,11 +541,9 @@ def next_brand(channel):
         print(brand)
 
 def prev_brand(channel):
-    # global lcd_string
     if GPIO.input(pin.prev_brand):
         brand.rotate(-1)
-        # lcd_string = set_lcd()
-        # update_lcd()
+
         global horn, wail, m_wail, yelp, phaser, lcd_string, brand_name, aux1, aux2, aux1_is_usable, aux2_is_usable
         brand_name = set_brand()
 
@@ -635,30 +636,19 @@ try:
         else:
             GPIO.output(pin.siren_led, GPIO.LOW)
 
-        # if auxiliary:
-        #     GPIO.output(pin.aux_led, GPIO.HIGH)
-        # else:
-        #     GPIO.output(pin.aux_led, GPIO.LOW)
-
         set_brand()
-        # display.lcd_display_string("Welcome to Piren", 1) # Write line of text to first line of display
-        # display.lcd_display_string("by Ian Thompson", 2) # Write line of text to second line of display
+
 
 
         sleep(0.01)
 
 
-# try:
-#   print("Welcome to Piren.")
 
-#   while True:
-# 	 # print(horn_playing)
-#   #   sleep(1)    # print "Time's up. Finished!"
 
 except KeyboardInterrupt:
     display.lcd_clear()
 
-finally:                   # this block will run no matter how the try block exits
+finally:
     display.lcd_clear()
-    GPIO.cleanup()         # clean up after yourself
+    GPIO.cleanup()
 
