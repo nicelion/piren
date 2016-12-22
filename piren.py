@@ -24,7 +24,7 @@ display = lcddriver.lcd()
 dead = 'dead.wav'
 
 brand = deque([1,0])
-fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0])
+fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 
 auxiliary = False
@@ -80,6 +80,10 @@ def set_wail():
             return sirens.Federal_Signal.PA640.wail()
         if fed_sig_model[6] == 1:
             return sirens.Federal_Signal.PA4000.wail()
+        if fed_sig_model[7] == 1:
+            return sirens.Federal_Signal.SS200_Mini.wail()
+        if fed_sig_model[8] == 1:
+            return sirens.Federal_Signal.SS2000SM.wail()
 
 def set_horn():
     if brand_name == CODE_3:
@@ -108,6 +112,10 @@ def set_horn():
             return sirens.Federal_Signal.PA640.horn()
         if fed_sig_model[6] == 1:
             return sirens.Federal_Signal.PA4000.horn()
+        if fed_sig_model[7] == 1:
+            return sirens.Federal_Signal.SS200_Mini.horn()
+        if fed_sig_model[8] == 1:
+            return sirens.Federal_Signal.SS2000SM.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -136,6 +144,10 @@ def set_yelp():
             return sirens.Federal_Signal.PA640.yelp()
         if fed_sig_model[6] == 1:
             return sirens.Federal_Signal.PA4000.yelp()
+        if fed_sig_model[7] == 1:
+            return sirens.Federal_Signal.SS200_Mini.yelp()
+        if fed_sig_model[8] == 1:
+            return sirens.Federal_Signal.SS2000SM.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -164,6 +176,10 @@ def set_phaser():
             return sirens.Federal_Signal.PA640.phaser()
         if fed_sig_model[6] == 1:
             return sirens.Federal_Signal.PA4000.phaser()
+        if fed_sig_model[7] == 1:
+            return dead
+        if fed_sig_model[8] == 1:
+            return sirens.Federal_Signal.SS2000SM.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -193,6 +209,10 @@ def set_aux1():
             return [dead, False]
         if fed_sig_model[6] == 1:
             return [dead, False]
+        if fed_sig_model[7] == 1:
+            return [dead, False]
+        if fed_sig_model[8] == 1:
+            return [sirens.Federal_Signal.SS2000SM.hilo(), False]
 
 def set_aux2():
     if brand_name == CODE_3:
@@ -221,6 +241,11 @@ def set_aux2():
             return [dead, False]
         if fed_sig_model[6] == 1:
             return [dead, False]
+        if fed_sig_model[7] == 1:
+            return [dead, False]
+        if fed_sig_model[8] == 1:
+            return [dead, False]
+
 
 brand_name = set_brand()
 
@@ -267,8 +292,10 @@ def set_lcd():
             display.lcd_display_string("     PA640", 2)
         if fed_sig_model[6] == 1:
             display.lcd_display_string("    PA40000", 2)
-
-
+        if fed_sig_model[7] == 1:
+            display.lcd_display_string("   SS200 Mini", 2)
+        if fed_sig_model[8] == 1:
+            display.lcd_display_string("    SS2000SM", 2)
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
