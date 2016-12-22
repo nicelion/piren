@@ -8,6 +8,7 @@ __pycache__/
 
 .DS_Store
 .AppleDouble
+.idea
 
 # Distribution / packaging
 .Python
