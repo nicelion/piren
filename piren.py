@@ -24,7 +24,7 @@ display = lcddriver.lcd()
 dead = 'dead.wav'
 
 brand = deque([1,0])
-fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0  ])
 code_3_model = deque([1, 0, 0, 0, 0])
 
 auxiliary = False
@@ -240,6 +240,8 @@ def set_aux1():
             return [sirens.Federal_Signal.SSP3000b.hilo(), False]
         if fed_sig_model[10] == 1:
             return [dead, False]
+        if fed_sig_model[11] == 1:
+            return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep2(), True]
 def set_aux2():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -275,6 +277,8 @@ def set_aux2():
             return [dead, False]
         if fed_sig_model[10] == 1:
             return [dead, False]
+        if fed_sig_model[11] == 1:
+            return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep1(), True]
 def set_aux3():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -310,6 +314,8 @@ def set_aux3():
             return [dead, False]
         if fed_sig_model[10] == 1:
             return [dead, False]
+        if fed_sig_model[11] == 1:
+            return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.hetro(), True]
 def set_aux4():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -345,6 +351,8 @@ def set_aux4():
             return [dead, False]
         if fed_sig_model[10] == 1:
             return [dead, False]
+        if fed_sig_model[11] == 1:
+            return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.Uhilo(), True]
 
 brand_name = set_brand()
 
@@ -399,6 +407,8 @@ def set_lcd():
             display.lcd_display_string("    SSP3000b", 2)
         if fed_sig_model[10] == 1:
             display.lcd_display_string("SSP3000b w Rumbler", 2)
+        if fed_sig_model[11] == 1:
+            display.lcd_display_string("Touchmaster Delta", 2)
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
@@ -515,12 +525,17 @@ def play_phaser(channel):
 def play_yelp(channel):
     global yelp_playing
     if GPIO.input(pin.yelp) and not yelp_playing:
-        if wail_playing:
-            wail.stop()
-        yelp.play(-1)
-        wail.set_volume(0)
-        yelp_playing = True
+        if auxiliary and aux3_is_usable:
+            aux3.play(-1)
+        else:
+            if wail_playing:
+                wail.stop()
+            yelp.play(-1)
+            wail.set_volume(0)
+            yelp_playing = True
     else:
+        if auxiliary and aux3_is_usable:
+            aux3.stop()
         if wail_playing:
             wail.play(-1)
         yelp.stop()
@@ -530,10 +545,17 @@ def play_yelp(channel):
 
 def play_manual_wail(channel):
     global manual_wail_playing, wail_playing
-    if GPIO.input(pin.manual_wail) and not manual_wail_playing and not wail_playing:
-        m_wail.play(-1)
-        manual_wail_playing = True
+    if GPIO.input(pin.manual_wail):
+        if auxiliary and aux4_is_usable:
+            aux4.play(-1)
+
+        # if not manual_wail_playing and not wail_playing and not aux4_is_usable and not auxiliary:
+        else:
+            m_wail.play(-1)
+            manual_wail_playing = True
     else:
+        if auxiliary and aux4_is_usable:
+            aux4.stop()
         m_wail.stop()
         manual_wail_playing = False
 
