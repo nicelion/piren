@@ -24,7 +24,7 @@ display = lcddriver.lcd()
 dead = 'dead.wav'
 
 brand = deque([1,0])
-fed_sig_model = deque([1, 0, 0, 0, 0])
+fed_sig_model = deque([1, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 
 auxiliary = False
@@ -76,7 +76,8 @@ def set_wail():
             return sirens.Federal_Signal.PA150.wail()
         if fed_sig_model[4] == 1:
              return sirens.Federal_Signal.PA300.wail()
-
+        if fed_sig_model[5] == 1:
+             return sirens.Federal_Signal.PA640.wail()
 
 
 def set_horn():
@@ -102,6 +103,8 @@ def set_horn():
             return dead
         if fed_sig_model[4] == 1:
              return sirens.Federal_Signal.PA300.horn()
+        if fed_sig_model[5] == 1:
+             return sirens.Federal_Signal.PA640.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -126,6 +129,8 @@ def set_yelp():
             return sirens.Federal_Signal.PA150.yelp()
         if fed_sig_model[4] == 1:
              return sirens.Federal_Signal.PA300.yelp()
+        if fed_sig_model[5] == 1:
+             return sirens.Federal_Signal.PA640.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -150,6 +155,8 @@ def set_phaser():
             return sirens.Federal_Signal.PA150.hilo()
         if fed_sig_model[4] == 1:
             return sirens.Federal_Signal.PA300.phaser()
+        if fed_sig_model[5] == 1:
+             return sirens.Federal_Signal.PA640.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -175,6 +182,8 @@ def set_aux1():
             return [dead, False]
         if fed_sig_model[4] == 1:
             return [sirens.Federal_Signal.PA300.hilo(), True]
+        if fed_sig_model[5] == 1:
+            return [dead, False]
 
 def set_aux2():
     if brand_name == CODE_3:
@@ -199,6 +208,9 @@ def set_aux2():
             return [dead, False]
         elif fed_sig_model[4] == 1:
             return [dead, False]
+        if fed_sig_model[5] == 1:
+            return [dead, False]
+
 brand_name = set_brand()
 
 
@@ -239,8 +251,9 @@ def set_lcd():
         if fed_sig_model[3] == 1:
             display.lcd_display_string("     PA150", 2)
         if fed_sig_model[4] == 1:
+            display.lcd_display_string("     PA300", 2)
+        if fed_sig_model[5] == 1:
             display.lcd_display_string("     PA640", 2)
-
 
 
 
