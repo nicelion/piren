@@ -23,9 +23,10 @@ display = lcddriver.lcd()
 
 dead = 'dead.wav'
 
-brand = deque([1,0])
+brand = deque([1, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
+galls_model = deque([1, 0])
 
 auxiliary = False
 
@@ -94,6 +95,11 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Federal_Signal.Unitrol_8001.wail()
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.wail()
+    if brand_name == GALLS:
+        if galls_model[0] == 1:
+            return sirens.Galls.ST160_Street_Thunder.wail()
+        if galls_model[1] == 1:
+            return sirens.Galls.ST300_Command_Center.wail()
 
 
 def set_horn():  # Sets which sound will be used for the horn.
@@ -139,6 +145,11 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Federal_Signal.Unitrol_8001.horn()
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.horn()
+    if brand_name == GALLS:
+        if galls_model[0] == 1:
+            return sirens.Galls.ST160_Street_Thunder.horn()
+        if galls_model[1] == 1:
+            return sirens.Galls.ST300_Command_Center.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -184,6 +195,11 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Federal_Signal.Unitrol_8001.yelp()
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.yelp()
+    if brand_name == GALLS:
+        if galls_model[0] == 1:
+            return sirens.Galls.ST160_Street_Thunder.yelp()
+        if galls_model[1] == 1:
+            return sirens.Galls.ST300_Command_Center.yelp()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -229,6 +245,11 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Federal_Signal.Unitrol_8001.phaser()
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.hetro()
+    if brand_name == GALLS:
+        if galls_model[0] == 1:
+            return sirens.Galls.ST160_Street_Thunder.thunder()
+        if galls_model[1] == 1:
+            return sirens.Galls.ST300_Command_Center.phaser()
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
     # Returns a list: [Str, Bool]
@@ -257,6 +278,13 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
             return [sirens.Federal_Signal.Unitrol_8001.hilo(), True]
         else:
             return [dead, False]
+    if brand_name == GALLS:
+        if galls_model[0] == 1:
+            return [sirens.Galls.ST160_Street_Thunder.hilo(), True]
+        if galls_model[1] == 1:
+            return [sirens.Galls.ST300_Command_Center.hilo(), True]
+        else:
+            return [dead, False]
 def set_aux2():
     # Returns a list: [Str, Bool]
     # The first element returned is the string to the auxillary sound,
@@ -279,6 +307,10 @@ def set_aux2():
             return [sirens.Federal_Signal.Unitrol_8001.sweep(), True]
         else:
             return [dead, False]
+    if brand_name == GALLS:
+        return [dead, False]
+
+
 def set_aux3():
     # Returns a list: [Str, Bool]
     # The first element returned is the string to the auxillary sound,
@@ -292,6 +324,8 @@ def set_aux3():
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.hetro(), True]
         else:
             return [dead, False]
+    if brand_name == GALLS:
+        return [dead, False]
 
 def set_aux4():
     # Returns a list: [Str, Bool]
@@ -306,6 +340,8 @@ def set_aux4():
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.Uhilo(), True]
         else:
             return [dead, False]
+    if brand_name == GALLS:
+        return [dead, False]
 
 brand_name = set_brand()
 
@@ -323,7 +359,7 @@ def set_lcd():
     elif brand_name == FED_SIG:
         display.lcd_display_string(' Federal Signal', 1)
     elif brand_name == GALLS:
-        display.lcd_display_string('Galls', 1)
+        display.lcd_display_string('     Galls', 1)
     elif brand_name == WHELEN:
         display.lcd_display_string('Whelen', 1)
     elif brand_name == OTHER:
@@ -373,6 +409,13 @@ def set_lcd():
             display.lcd_display_string("  Unitrol 8001", 2)
         if fed_sig_model[14] == 1:
             display.lcd_display_string("Unitrol Omega 90", 2)
+    if brand_name == GALLS:
+        if galls_model[0] == 1:
+            display.lcd_display_string("ST160 Street Thunder", 2)
+        if galls_model[1] == 1:
+            display.lcd_display_string("ST300 Command Center", 2)
+
+
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
@@ -531,6 +574,8 @@ def next_selection(channel):
         elif brand_name == CODE_3:
             code_3_model.rotate(1)
             print('rotated code 3 1')
+        elif brand_name == GALLS:
+            galls_model.rotate(1)
 
         # # print(setup.fed_sig_model)
         wail.stop()
@@ -567,7 +612,8 @@ def prev_selection(channel):
         elif brand_name == CODE_3:
             code_3_model.rotate(-1)
             print('rotated code 3 -1')
-
+        elif brand_name == GALLS:
+            galls_model.rotate(-1)
         wail.stop()
         horn.stop()
         m_wail.stop()
