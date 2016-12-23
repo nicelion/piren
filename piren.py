@@ -345,7 +345,8 @@ def set_lcd():
             display.lcd_display_string("  Unitrol 80k", 2)
         if fed_sig_model[13] == 1:
             display.lcd_display_string("  Unitrol 8001", 2)
-
+        if fed_sig_model[14] == 1:
+            display.lcd_display_string("Unitrol Omega 90", 2)
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
