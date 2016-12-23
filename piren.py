@@ -255,7 +255,7 @@ def set_yelp():  # Sets which sound will be used for yelp
         if whelen_model[7] == 1:
             return sirens.Whelen.Epsilon_EPSL_1.yelp()
         if whelen_model[8] == 1:
-            return sirens.Whelen.Gamma_2.yelp()
+            return sirens.Whelen.Gamma_2.warble()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -370,7 +370,7 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
         elif whelen_model[7] == 1:
             return [sirens.Whelen.Epsilon_EPSL_1.hilo(), True]
         elif whelen_model[8] == 1:
-            return [sirens.Whelen.Gamma_2.warble(), True]
+            return [sirens.Whelen.Gamma_2.riot(), True]
         else:
             return [dead, False]
 
@@ -399,10 +399,7 @@ def set_aux2():
     if brand_name == GALLS:
         return [dead, False]
     if brand_name == WHELEN:
-        if whelen_model[8] == 1:
-            return [sirens.Whelen.Gamma_2.riot(), True]
-        else:
-            return [dead, False]
+        return [dead, False]
 
 
 def set_aux3():
