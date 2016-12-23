@@ -92,7 +92,8 @@ def set_wail():
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.wail()
         if fed_sig_model[12] == 1:
             return sirens.Federal_Signal.Unitrol_80k.wail()
-
+        if fed_sig_model[13] == 1:
+            return sirens.Federal_Signal.Unitrol_8001.wail()
 def set_horn():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -132,6 +133,8 @@ def set_horn():
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.horn()
         if fed_sig_model[12] == 1:
             return sirens.Federal_Signal.Unitrol_80k.horn()
+        if fed_sig_model[13] == 1:
+            return sirens.Federal_Signal.Unitrol_8001.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -172,6 +175,8 @@ def set_yelp():
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.yelp()
         if fed_sig_model[12] == 1:
             return sirens.Federal_Signal.Unitrol_80k.yelp()
+        if fed_sig_model[13] == 1:
+            return sirens.Federal_Signal.Unitrol_8001.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -212,163 +217,61 @@ def set_phaser():
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.phaser()
         if fed_sig_model[12] == 1:
             return sirens.Federal_Signal.Unitrol_80k.hetro()
+        if fed_sig_model[13] == 1:
+            return sirens.Federal_Signal.Unitrol_8001.phaser()
 
 def set_aux1():
     if brand_name == CODE_3:
-        if code_3_model[0] == 1:
-            return [dead, False]
-        if code_3_model[1] == 1:
-            return [dead, False]
         if code_3_model[2] == 1:
-            print('actuals')
             return [sirens.Code_3.Mastercom_B.hilo(), True]
-        if code_3_model[3] == 1:
-            return [dead, False]
-        if code_3_model[4] == 1:
+        else:
             return [dead, False]
     if brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            return [dead, False]
-        if fed_sig_model[1] == 1:
-            return [dead, False]
         if fed_sig_model[2] == 1:
             return [sirens.Federal_Signal.PA20.yelp2(), True]
-        if fed_sig_model[3] == 1:
-            return [dead, False]
         if fed_sig_model[4] == 1:
             return [sirens.Federal_Signal.PA300.hilo(), True]
-        if fed_sig_model[5] == 1:
-            return [dead, False]
-        if fed_sig_model[6] == 1:
-            return [dead, False]
-        if fed_sig_model[7] == 1:
-            return [dead, False]
         if fed_sig_model[8] == 1:
             return [sirens.Federal_Signal.SS2000SM.hilo(), False]
         if fed_sig_model[9] == 1:
             return [sirens.Federal_Signal.SSP3000b.hilo(), False]
-        if fed_sig_model[10] == 1:
-            return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep2(), True]
-        if fed_sig_model[12] == 1:
+        if fed_sig_model[13] == 1:
+            return [sirens.Federal_Signal.Unitrol_8001.hilo(), True]
+        else:
             return [dead, False]
 def set_aux2():
     if brand_name == CODE_3:
-        if code_3_model[0] == 1:
-            return [dead, False]
-        if code_3_model[1] == 1:
-            return [dead, False]
         if code_3_model[2] == 1:
             return [sirens.Code_3.Mastercom_B.hylo(), True]
-        if code_3_model[3] == 1:
-            return [dead, False]
-        if code_3_model[4] == 1:
+        else:
             return [dead, False]
     elif brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            return [dead, False]
-        elif fed_sig_model[1] == 1:
-            return [dead, False]
-        elif fed_sig_model[2] == 1:
+        if fed_sig_model[2] == 1:
             return [sirens.Federal_Signal.PA20.yelp3(), True]
-        elif fed_sig_model[3] == 1:
-            return [dead, False]
-        elif fed_sig_model[4] == 1:
-            return [dead, False]
-        if fed_sig_model[5] == 1:
-            return [dead, False]
-        if fed_sig_model[6] == 1:
-            return [dead, False]
-        if fed_sig_model[7] == 1:
-            return [dead, False]
-        if fed_sig_model[8] == 1:
-            return [dead, False]
-        if fed_sig_model[9] == 1:
-            return [dead, False]
-        if fed_sig_model[10] == 1:
-            return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep1(), True]
-        if fed_sig_model[12] == 1:
+        if fed_sig_model[13] == 1:
+            return [sirens.Federal_Signal.Unitrol_8001.sweep(), True]
+        else:
             return [dead, False]
 def set_aux3():
     if brand_name == CODE_3:
-        if code_3_model[0] == 1:
-            return [dead, False]
-        if code_3_model[1] == 1:
-            return [dead, False]
-        if code_3_model[2] == 1:
-            return [dead, False]
-        if code_3_model[3] == 1:
-            return [dead, False]
-        if code_3_model[4] == 1:
-            return [dead, False]
+        return [dead, False]
     elif brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            return [dead, False]
-        elif fed_sig_model[1] == 1:
-            return [dead, False]
-        elif fed_sig_model[2] == 1:
-            return [dead, False]
-        elif fed_sig_model[3] == 1:
-            return [dead, False]
-        elif fed_sig_model[4] == 1:
-            return [dead, False]
-        if fed_sig_model[5] == 1:
-            return [dead, False]
-        if fed_sig_model[6] == 1:
-            return [dead, False]
-        if fed_sig_model[7] == 1:
-            return [dead, False]
-        if fed_sig_model[8] == 1:
-            return [dead, False]
-        if fed_sig_model[9] == 1:
-            return [dead, False]
-        if fed_sig_model[10] == 1:
-            return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.hetro(), True]
-        if fed_sig_model[12] == 1:
+        else:
             return [dead, False]
+
 def set_aux4():
     if brand_name == CODE_3:
-        if code_3_model[0] == 1:
-            return [dead, False]
-        if code_3_model[1] == 1:
-            return [dead, False]
-        if code_3_model[2] == 1:
-            return [dead, False]
-        if code_3_model[3] == 1:
-            return [dead, False]
-        if code_3_model[4] == 1:
-            return [dead, False]
+        return [dead, False]
     elif brand_name == FED_SIG:
-        if fed_sig_model[0] == 1:
-            return [dead, False]
-        elif fed_sig_model[1] == 1:
-            return [dead, False]
-        elif fed_sig_model[2] == 1:
-            return [dead, False]
-        elif fed_sig_model[3] == 1:
-            return [dead, False]
-        elif fed_sig_model[4] == 1:
-            return [dead, False]
-        if fed_sig_model[5] == 1:
-            return [dead, False]
-        if fed_sig_model[6] == 1:
-            return [dead, False]
-        if fed_sig_model[7] == 1:
-            return [dead, False]
-        if fed_sig_model[8] == 1:
-            return [dead, False]
-        if fed_sig_model[9] == 1:
-            return [dead, False]
-        if fed_sig_model[10] == 1:
-            return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.Uhilo(), True]
-        if fed_sig_model[12] == 1:
+        else:
             return [dead, False]
 
 brand_name = set_brand()
@@ -428,6 +331,8 @@ def set_lcd():
             display.lcd_display_string("Touchmaster Delta", 2)
         if fed_sig_model[12] == 1:
             display.lcd_display_string("  Unitrol 80k", 2)
+        if fed_sig_model[13] == 1:
+            display.lcd_display_string("  Unitrol 8001", 2)
 
 
 horn = pygame.mixer.Sound(set_horn())
