@@ -115,6 +115,8 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Cencom_Sapphire.wail()
         if whelen_model[6] == 1:
             return sirens.Whelen.Cencom_Sapphire_Howler.wail()
+        if whelen_model[7] == 1:
+            return sirens.Whelen.Epsilon_EPSL_1.wail()
 
 def set_horn():  # Sets which sound will be used for the horn.
     if brand_name == CODE_3:
@@ -179,6 +181,8 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Whelen.Cencom_Sapphire.horn()
         if whelen_model[6] == 1:
             return sirens.Whelen.Cencom_Sapphire_Howler.horn()
+        if whelen_model[7] == 1:
+            return sirens.Whelen.Epsilon_EPSL_1.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -244,6 +248,8 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Whelen.Cencom_Sapphire.yelp()
         if whelen_model[6] == 1:
             return sirens.Whelen.Cencom_Sapphire_Howler.yelp()
+        if whelen_model[7] == 1:
+            return sirens.Whelen.Epsilon_EPSL_1.yelp()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -309,6 +315,8 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Whelen.Cencom_Sapphire.phaser()
         if whelen_model[6] == 1:
             return sirens.Whelen.Cencom_Sapphire_Howler.phaser()
+        if whelen_model[7] == 1:
+            return sirens.Whelen.Epsilon_EPSL_1.phaser()
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
     # Returns a list: [Str, Bool]
@@ -351,6 +359,8 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
             return [sirens.Whelen.Alpha_22m.power_call_2(), True]
         elif whelen_model[4] == 1:
             return [sirens.Whelen.Cencom_Gold.hilo(), True]
+        elif whelen_model[7] == 1:
+            return [sirens.Whelen.Epsilon_EPSL_1.hilo(), True]
         else:
             return [dead, False]
 
@@ -504,7 +514,8 @@ def set_lcd():
             display.lcd_display_string('Cencom Sapphire', 2)
         if whelen_model[6] == 1:
             display.lcd_display_string('Cencom Sapphire Howler', 2)
-
+        if whelen_model[7] == 1:
+            display.lcd_display_string(' Epsilon EPSL 1', 2)
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
