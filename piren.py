@@ -27,7 +27,7 @@ brand = deque([1, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 galls_model = deque([1, 0])
-whelen_model = deque([1, 0, 0])
+whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0])
 auxiliary = False
 
 CODE_3 = 'CODE_3'
@@ -107,6 +107,8 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Alpha.wail()
         if whelen_model[2] == 1:
             return sirens.Whelen.Alpha_22m.wail()
+        if whelen_model[3] == 1:
+            return sirens.Whelen.Beta.wail()
 
 
 def set_horn():  # Sets which sound will be used for the horn.
@@ -164,6 +166,8 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Whelen.Alpha.horn()
         if whelen_model[2] == 1:
             return sirens.Whelen.Alpha_22m.horn()
+        if whelen_model[3] == 1:
+            return sirens.Whelen.Beta.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -221,6 +225,8 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Whelen.Alpha.yelp()
         if whelen_model[2] == 1:
             return sirens.Whelen.Alpha_22m.power_call()
+        if whelen_model[3] == 1:
+            return sirens.Whelen.Beta.yelp()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -278,6 +284,8 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Whelen.Alpha.phaser()
         if whelen_model[2] == 1:
             return sirens.Whelen.Alpha_22m.wail2()
+        if whelen_model[3] == 1:
+            return sirens.Whelen.Beta.phaser()
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
     # Returns a list: [Str, Bool]
@@ -463,6 +471,8 @@ def set_lcd():
             display.lcd_display_string('     Alpha', 2)
         if whelen_model[2] == 1:
             display.lcd_display_string('   Alpha 22m', 2)
+        if whelen_model[3] == 1:
+            display.lcd_display_string('      Beta', 2)
 
 
 
