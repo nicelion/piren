@@ -23,11 +23,11 @@ display = lcddriver.lcd()
 
 dead = 'dead.wav'
 
-brand = deque([1, 0, 0])
+brand = deque([1, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 galls_model = deque([1, 0])
-
+whelen_model = deque([1, 0, 0])
 auxiliary = False
 
 CODE_3 = 'CODE_3'
@@ -100,6 +100,13 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Galls.ST160_Street_Thunder.wail()
         if galls_model[1] == 1:
             return sirens.Galls.ST300_Command_Center.wail()
+    if brand_name == WHELEN:
+        if whelen_model[0] == 1:
+            return sirens.Whelen._295HF100.wail()
+        if whelen_model[1] == 1:
+            return sirens.Whelen.Alpha.wail()
+        if whelen_model[2] == 1:
+            return sirens.Whelen.Alpha_22m.wail()
 
 
 def set_horn():  # Sets which sound will be used for the horn.
@@ -150,6 +157,13 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Galls.ST160_Street_Thunder.horn()
         if galls_model[1] == 1:
             return sirens.Galls.ST300_Command_Center.horn()
+    if brand_name == WHELEN:
+        if whelen_model[0] == 1:
+            return sirens.Whelen._295HF100.horn()
+        if whelen_model[1] == 1:
+            return sirens.Whelen.Alpha.horn()
+        if whelen_model[2] == 1:
+            return sirens.Whelen.Alpha_22m.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -200,6 +214,13 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Galls.ST160_Street_Thunder.yelp()
         if galls_model[1] == 1:
             return sirens.Galls.ST300_Command_Center.yelp()
+    if brand_name == WHELEN:
+        if whelen_model[0] == 1:
+            return sirens.Whelen._295HF100.yelp()
+        if whelen_model[1] == 1:
+            return sirens.Whelen.Alpha.yelp()
+        if whelen_model[2] == 1:
+            return sirens.Whelen.Alpha_22m.power_call()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -250,6 +271,13 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Galls.ST160_Street_Thunder.thunder()
         if galls_model[1] == 1:
             return sirens.Galls.ST300_Command_Center.phaser()
+    if brand_name == WHELEN:
+        if whelen_model[0] == 1:
+            return sirens.Whelen._295HF100.phaser()
+        if whelen_model[1] == 1:
+            return sirens.Whelen.Alpha.phaser()
+        if whelen_model[2] == 1:
+            return sirens.Whelen.Alpha_22m.wail2()
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
     # Returns a list: [Str, Bool]
@@ -285,6 +313,14 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
             return [sirens.Galls.ST300_Command_Center.hilo(), True]
         else:
             return [dead, False]
+    if brand_name == WHELEN:
+        if whelen_model[1] == 1:
+            return [sirens.Whelen.Alpha.hilo(), True]
+        elif whelen_model[2] == 1:
+            return [sirens.Whelen.Alpha_22m.power_call_2(), True]
+        else:
+            return [dead, False]
+
 def set_aux2():
     # Returns a list: [Str, Bool]
     # The first element returned is the string to the auxillary sound,
@@ -309,6 +345,8 @@ def set_aux2():
             return [dead, False]
     if brand_name == GALLS:
         return [dead, False]
+    if brand_name == WHELEN:
+        return [dead, False]
 
 
 def set_aux3():
@@ -326,6 +364,8 @@ def set_aux3():
             return [dead, False]
     if brand_name == GALLS:
         return [dead, False]
+    if brand_name == WHELEN:
+        return [dead, False]
 
 def set_aux4():
     # Returns a list: [Str, Bool]
@@ -341,6 +381,8 @@ def set_aux4():
         else:
             return [dead, False]
     if brand_name == GALLS:
+        return [dead, False]
+    if brand_name == WHELEN:
         return [dead, False]
 
 brand_name = set_brand()
@@ -361,11 +403,11 @@ def set_lcd():
     elif brand_name == GALLS:
         display.lcd_display_string('     Galls', 1)
     elif brand_name == WHELEN:
-        display.lcd_display_string('Whelen', 1)
+        display.lcd_display_string('     Whelen', 1)
     elif brand_name == OTHER:
-        display.lcd_display_string('Other', 1)
+        display.lcd_display_string('     Other', 1)
     elif brand_name == HORNS:
-        display.lcd_display_string('Horns', 1)
+        display.lcd_display_string('     Horns', 1)
 
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -414,6 +456,13 @@ def set_lcd():
             display.lcd_display_string("ST160 Street Thunder", 2)
         if galls_model[1] == 1:
             display.lcd_display_string("ST300 Command Center", 2)
+    if brand_name == WHELEN:
+        if whelen_model[0] == 1:
+            display.lcd_display_string('    295HF100', 2)
+        if whelen_model[1] == 1:
+            display.lcd_display_string('     Alpha', 2)
+        if whelen_model[2] == 1:
+            display.lcd_display_string('   Alpha 22m', 2)
 
 
 
@@ -576,6 +625,8 @@ def next_selection(channel):
             print('rotated code 3 1')
         elif brand_name == GALLS:
             galls_model.rotate(1)
+        elif brand_name == WHELEN:
+            whelen_model.rotate(1)
 
         # # print(setup.fed_sig_model)
         wail.stop()
@@ -614,6 +665,9 @@ def prev_selection(channel):
             print('rotated code 3 -1')
         elif brand_name == GALLS:
             galls_model.rotate(-1)
+        elif brand_name == WHELEN:
+            whelen_model.rotate(-1)
+
         wail.stop()
         horn.stop()
         m_wail.stop()
