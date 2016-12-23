@@ -91,6 +91,8 @@ If you install Piren, and don't change anything, below are preset pins and their
 
 These are the parts I used. Obviously, you don't need to get the *exact* buttons and wires I used, but I do recomend them. The LCD I recomend, I strongly recomended. If you buy one thing off line, I recomend it be the LCD. Reason being: it comes with a i2c backpack, which needs to be soldered on. The backpack allows you to only need 4 GPIO pins for use.
 
+I was able to go to a local RadioShack to get most of the buttons. Fortunately, the were going out of business, (kind of sad really) and all there stuff was 60% off. After following these links, the seem to be sold out online, but they should be available at your RadioShack.
+
 - [RadioShack Momentary Pushbutton Switches (2-Pack) | $3.99](https://www.radioshack.com/collections/switches/products/pk2-spst-push-sw) x2. (I used these to switch the brand and models)
 - [RadioShack SQ No Push Switch | $3.49](https://www.radioshack.com/collections/switches/products/sq-no-push-switch) x4 (Used for the phaser and wails and other sirens.)
 - [RadioShack SPST RED Switch | $3.49](https://www.radioshack.com/collections/switches/products/spst-red-switch) x1 (Used for the horn)
