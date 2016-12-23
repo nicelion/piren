@@ -113,7 +113,8 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Cencom_Gold.wail()
         if whelen_model[5] == 1:
             return sirens.Whelen.Cencom_Sapphire.wail()
-
+        if whelen_model[6] == 1:
+            return sirens.Whelen.Cencom_Sapphire_Howler.wail()
 
 def set_horn():  # Sets which sound will be used for the horn.
     if brand_name == CODE_3:
@@ -176,6 +177,8 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Whelen.Cencom_Gold.horn()
         if whelen_model[5] == 1:
             return sirens.Whelen.Cencom_Sapphire.horn()
+        if whelen_model[6] == 1:
+            return sirens.Whelen.Cencom_Sapphire_Howler.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -239,6 +242,8 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Whelen.Cencom_Gold.yelp()
         if whelen_model[5] == 1:
             return sirens.Whelen.Cencom_Sapphire.yelp()
+        if whelen_model[6] == 1:
+            return sirens.Whelen.Cencom_Sapphire_Howler.yelp()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -302,6 +307,8 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Whelen.Cencom_Gold.phaser()
         if whelen_model[5] == 1:
             return sirens.Whelen.Cencom_Sapphire.phaser()
+        if whelen_model[6] == 1:
+            return sirens.Whelen.Cencom_Sapphire_Howler.phaser()
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
     # Returns a list: [Str, Bool]
@@ -491,10 +498,12 @@ def set_lcd():
             display.lcd_display_string('   Alpha 22m', 2)
         if whelen_model[3] == 1:
             display.lcd_display_string('      Beta', 2)
-        if whelen_model[3] == 1:
-            display.lcd_display_string('  Cencom Gold', 2)
         if whelen_model[4] == 1:
+            display.lcd_display_string('  Cencom Gold', 2)
+        if whelen_model[5] == 1:
             display.lcd_display_string('Cencom Sapphire', 2)
+        if whelen_model[6] == 1:
+            display.lcd_display_string('Cencom Sapphire Howler', 2)
 
 
 horn = pygame.mixer.Sound(set_horn())
