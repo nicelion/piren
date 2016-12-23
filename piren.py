@@ -24,7 +24,7 @@ display = lcddriver.lcd()
 dead = 'dead.wav'
 
 brand = deque([1,0])
-fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0  ])
+fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 
 auxiliary = False
@@ -90,6 +90,9 @@ def set_wail():
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.wail()
         if fed_sig_model[11] == 1:
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.wail()
+        if fed_sig_model[12] == 1:
+            return sirens.Federal_Signal.Unitrol_80k.wail()
+
 def set_horn():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -127,6 +130,8 @@ def set_horn():
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.horn()
         if fed_sig_model[11] == 1:
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.horn()
+        if fed_sig_model[12] == 1:
+            return sirens.Federal_Signal.Unitrol_80k.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -165,6 +170,8 @@ def set_yelp():
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.yelp()
         if fed_sig_model[11] == 1:
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.yelp()
+        if fed_sig_model[12] == 1:
+            return sirens.Federal_Signal.Unitrol_80k.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -203,6 +210,8 @@ def set_phaser():
             return sirens.Federal_Signal.SSP3000b_w_Rumbler.phaser()
         if fed_sig_model[11] == 1:
             return sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.phaser()
+        if fed_sig_model[12] == 1:
+            return sirens.Federal_Signal.Unitrol_80k.hetro()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -242,6 +251,8 @@ def set_aux1():
             return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep2(), True]
+        if fed_sig_model[12] == 1:
+            return [dead, False]
 def set_aux2():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -279,6 +290,8 @@ def set_aux2():
             return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep1(), True]
+        if fed_sig_model[12] == 1:
+            return [dead, False]
 def set_aux3():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -316,6 +329,8 @@ def set_aux3():
             return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.hetro(), True]
+        if fed_sig_model[12] == 1:
+            return [dead, False]
 def set_aux4():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -353,6 +368,8 @@ def set_aux4():
             return [dead, False]
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.Uhilo(), True]
+        if fed_sig_model[12] == 1:
+            return [dead, False]
 
 brand_name = set_brand()
 
@@ -409,6 +426,9 @@ def set_lcd():
             display.lcd_display_string("SSP3000b w Rumbler", 2)
         if fed_sig_model[11] == 1:
             display.lcd_display_string("Touchmaster Delta", 2)
+        if fed_sig_model[12] == 1:
+            display.lcd_display_string("  Unitrol 80k", 2)
+
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
