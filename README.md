@@ -52,6 +52,8 @@ The following will be explained using a breadboard, howver, a breadboard should 
 
 The following image is an example of the circuit you need to create for the buttons. Keep in mind, while buying parts, you need to create this exact circuit for every single button and switch.
 
+
+**HOWEVER: The 100nf capacitor is not needed. If you want to add it, you can, but works just fine without it.**
 ![button circut](http://raspi.tv/wp-content/uploads/2014/07/both700.png)
 
 This image is not mine, and you can find the article I used, which is really helpful, [here](http://raspi.tv/2014/rpi-gpio-update-and-detecting-both-rising-and-falling-edges), which explains a little more of whats going on in this circuit. You should of course change the GPIO pin to the correct one, which you can read more about, right below.
