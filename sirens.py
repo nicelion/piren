@@ -380,6 +380,8 @@ class Whelen:
             return 'sirens/Whelen/Gamma 2/gam2wail.wav'
         def warble():
             return 'sirens/Whelen/Gamma 2/gam2warble.wav'
+        def yelp():
+            return 'sirens/Whelen/Gamma 2/gam2yelp.wav'
 
 class Other:
     class Air_Horns:
