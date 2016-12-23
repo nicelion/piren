@@ -45,6 +45,46 @@ You may have to go in and change the pygame mixer initialization so the sirens s
     pygame.mixer.pre_init(48000, -16, 1, 512)
 ```
 
+### Circuitry
+The following will be explained using a breadboard, howver, a breadboard should only be used for testing as connections are not always secure. Bumps and rattling from driving around could losen connections, potentially causing sirens to go off when they shouldn't. (Which may get you in legal trouble.)
+
+#### Buttons
+
+The following image is an example of the circuit you need to create for the buttons. Keep in mind, while buying parts, you need to create this exact circuit for every single button and switch.
+
+![button circut](http://raspi.tv/wp-content/uploads/2014/07/both700.png)
+
+This image is not mine, and you can find the article I used, which is really helpful, [here](http://raspi.tv/2014/rpi-gpio-update-and-detecting-both-rising-and-falling-edges), which explains a little more of whats going on in this circuit. You should of course change the GPIO pin to the correct one, which you can read more about, right below.
+
+```
+# GPIO Pin Numbers
+class pin:
+    wail = 25
+    horn = 24
+    phaser = 18
+    yelp = 5
+    manual_wail = 27
+    siren_led = 12
+
+    # Selection fed_sig_model
+    next = 17
+    previous = 9
+
+    # Selection Brand
+    next_brand = 11
+    prev_brand = 8
+
+    # Aux
+    aux = 26
+    aux_led = 20
+
+```
+
+When you go to make your circuits, just connect the right button, to the right GPIO pin, to recive the function. Below is a YouTube better explain the process.
+
+#### GPIO Pins and Their Preset Functions
+If you install Piren, and don't change anything, below are preset pins and their functions. You, of course can change them, if you want. But, if you are installing on a fresh Pi and aren't using the GPIO pins for anything else, it will probably be easier to use the default ones.
+
 ## Sirens
 
 Piren comes loaded with many sirens that are perfectly looped and from various different brands. Below is a list of all the sirens Piren has. Special thanks to crazytaxi1000 from LCPDFR.com for providinng the sirens. You can visit his LCPDFR profile [here](http://www.lcpdfr.com/profile/167825-crazytaxi1000/) and view the [United States Siren Mega Pack](http://www.lcpdfr.com/files/file/13561-united-states-siren-mega-pack-for-sirenmastery-54-siren-models/?&tab=comments#comment-123187) on LCPDFR's website. Again, a huge thanks to him for providing the sirens!
