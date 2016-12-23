@@ -111,6 +111,9 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Beta.wail()
         if whelen_model[4] == 1:
             return sirens.Whelen.Cencom_Gold.wail()
+        if whelen_model[5] == 1:
+            return sirens.Whelen.Cencom_Sapphire.wail()
+
 
 def set_horn():  # Sets which sound will be used for the horn.
     if brand_name == CODE_3:
@@ -171,6 +174,8 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Whelen.Beta.horn()
         if whelen_model[4] == 1:
             return sirens.Whelen.Cencom_Gold.horn()
+        if whelen_model[5] == 1:
+            return sirens.Whelen.Cencom_Sapphire.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -232,6 +237,8 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Whelen.Beta.yelp()
         if whelen_model[4] == 1:
             return sirens.Whelen.Cencom_Gold.yelp()
+        if whelen_model[5] == 1:
+            return sirens.Whelen.Cencom_Sapphire.yelp()
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -293,6 +300,8 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Whelen.Beta.phaser()
         if whelen_model[4] == 1:
             return sirens.Whelen.Cencom_Gold.phaser()
+        if whelen_model[5] == 1:
+            return sirens.Whelen.Cencom_Sapphire.phaser()
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
     # Returns a list: [Str, Bool]
@@ -484,6 +493,8 @@ def set_lcd():
             display.lcd_display_string('      Beta', 2)
         if whelen_model[3] == 1:
             display.lcd_display_string('  Cencom Gold', 2)
+        if whelen_model[4] == 1:
+            display.lcd_display_string('Cencom Sapphire', 2)
 
 
 horn = pygame.mixer.Sound(set_horn())
