@@ -37,7 +37,7 @@ OTHER = 'OTHER'
 HORNS = 'HORNS'
 
 
-def set_brand():
+def set_brand():  # Sets the brand name for the selected siren. See above.
     if brand[0] == 1:
         return CODE_3
     elif brand[1] == 1:
@@ -51,9 +51,7 @@ def set_brand():
     elif brand[5] == 1:
         return HORNS
 
-
-
-def set_wail():
+def set_wail():  # Sets what siren will be used for wail.
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.wail()
@@ -96,7 +94,9 @@ def set_wail():
             return sirens.Federal_Signal.Unitrol_8001.wail()
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.wail()
-def set_horn():
+
+
+def set_horn():  # Sets which sound will be used for the horn.
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.horn()
@@ -140,7 +140,8 @@ def set_horn():
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.horn()
 
-def set_yelp():
+
+def set_yelp():  # Sets which sound will be used for yelp
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.yelp()
@@ -184,7 +185,8 @@ def set_yelp():
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.yelp()
 
-def set_phaser():
+
+def set_phaser():  # Sets which sound will be used for the phaser
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
             return sirens.Code_3._3932_Scorpion.phaser()
@@ -228,7 +230,11 @@ def set_phaser():
         if fed_sig_model[14] == 1:
             return sirens.Federal_Signal.Unitrol_Omega_90.hetro()
 
-def set_aux1():
+def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
+    # Returns a list: [Str, Bool]
+    # The first element returned is the string to the auxillary sound,
+    # The second being a bool, which will indicate if the selected
+    # siren has an auxiliary siren.
     if brand_name == CODE_3:
         if code_3_model[2] == 1:
             return [sirens.Code_3.Mastercom_B.hilo(), True]
@@ -252,6 +258,11 @@ def set_aux1():
         else:
             return [dead, False]
 def set_aux2():
+    # Returns a list: [Str, Bool]
+    # The first element returned is the string to the auxillary sound,
+    # The second being a bool, which will indicate if the selected
+    # siren has an auxiliary siren.
+
     if brand_name == CODE_3:
         if code_3_model[2] == 1:
             return [sirens.Code_3.Mastercom_B.hylo(), True]
@@ -269,6 +280,11 @@ def set_aux2():
         else:
             return [dead, False]
 def set_aux3():
+    # Returns a list: [Str, Bool]
+    # The first element returned is the string to the auxillary sound,
+    # The second being a bool, which will indicate if the selected
+    # siren has an auxiliary siren.
+
     if brand_name == CODE_3:
         return [dead, False]
     elif brand_name == FED_SIG:
@@ -278,6 +294,11 @@ def set_aux3():
             return [dead, False]
 
 def set_aux4():
+    # Returns a list: [Str, Bool]
+    # The first element returned is the string to the auxillary sound,
+    # The second being a bool, which will indicate if the selected
+    # siren has an auxiliary siren.
+
     if brand_name == CODE_3:
         return [dead, False]
     elif brand_name == FED_SIG:
@@ -290,6 +311,11 @@ brand_name = set_brand()
 
 
 def set_lcd():
+    # This function is called every time the brand, or model, is changed.
+    # White space in the lcd_display_string() is so it will be centered on the lcd
+    # The simple python equation of "(16 - len(str)) / 2" gives the correct amount of white
+    # space so that the text can be centered.
+
     display.lcd_clear()
     set_brand()
     if brand_name == CODE_3:
@@ -385,16 +411,12 @@ class pin:
     aux = 26
     aux_led = 20
     
-
-
-
+# Siren playing Booleans
 wail_playing = False
 horn_playing = False
 yelp_playing = False
 phaser_playing = False
 manual_wail_playing = False
-
-
 
 # GPIO Setup
 GPIO.setmode(GPIO.BCM)
@@ -410,7 +432,6 @@ GPIO.setup(pin.next_brand, GPIO.IN)
 GPIO.setup(pin.prev_brand, GPIO.IN)
 GPIO.setup(pin.aux, GPIO.IN)
 GPIO.setup(pin.aux_led, GPIO.OUT)
-
 
 
 def play_wail(channel):
@@ -703,6 +724,7 @@ try:
         # When a siren, or multiple sirens, are playing, a led, of your color choice, will appear until the siren is
         # turned off. This acts as an indicator so that if for some reason, you are driving down the road and cant hear
         # the siren playing, you can easily be notified via the led.
+
         if wail_playing or yelp_playing or phaser_playing or manual_wail_playing:
             GPIO.output(pin.siren_led, GPIO.HIGH)
         else:
