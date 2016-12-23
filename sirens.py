@@ -383,6 +383,27 @@ class Whelen:
         def yelp():
             return 'sirens/Whelen/Gamma 2/gam2yelp.wav'
 
+    class WSSC30:
+        def horn():
+            return 'sirens/Whelen/WSSC30/c30horn.wav'
+        def phaser():
+            return 'sirens/Whelen/WSSC30/c30pier.wav'
+        def wail():
+            return 'sirens/Whelen/WSSC30/c30wail.wav'
+        def yelp():
+            return 'sirens/Whelen/WSSC30/c30yelp.wav'
+        def martian():
+            return 'sirens/Whelen/WSSC30/c30martian.wav'
+        def tritone():
+            return 'sirens/Whelen/WSSC30/c30tritone.wav'
+        def powercal():
+            return 'sirens/Whelen/WSSC30/c30pcall.wav'
+        def martian():
+            return 'sirens/Whelen/WSSC30/c30martian.wav'
+        def wail2():
+            return 'sirens/Whelen/WSSC30/c30wail2.wav'
+
+
 class Other:
     class Air_Horns:
         def horn():
