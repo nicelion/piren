@@ -148,7 +148,7 @@ Piren comes loaded with many sirens that are perfectly looped and from various d
 - Cencom Sapphire
 - Cencom Sapphire Howler
 - Epsilon EPSL-1
-- Gamma 2
+- Gamma 2 (Issue with the yelp siren, so it is not used.)
 
 #### Other
 
