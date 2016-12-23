@@ -94,6 +94,8 @@ def set_wail():
             return sirens.Federal_Signal.Unitrol_80k.wail()
         if fed_sig_model[13] == 1:
             return sirens.Federal_Signal.Unitrol_8001.wail()
+        if fed_sig_model[14] == 1:
+            return sirens.Federal_Signal.Unitrol_Omega_90.wail()
 def set_horn():
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -135,6 +137,8 @@ def set_horn():
             return sirens.Federal_Signal.Unitrol_80k.horn()
         if fed_sig_model[13] == 1:
             return sirens.Federal_Signal.Unitrol_8001.horn()
+        if fed_sig_model[14] == 1:
+            return sirens.Federal_Signal.Unitrol_Omega_90.horn()
 
 def set_yelp():
     if brand_name == CODE_3:
@@ -177,6 +181,8 @@ def set_yelp():
             return sirens.Federal_Signal.Unitrol_80k.yelp()
         if fed_sig_model[13] == 1:
             return sirens.Federal_Signal.Unitrol_8001.yelp()
+        if fed_sig_model[14] == 1:
+            return sirens.Federal_Signal.Unitrol_Omega_90.yelp()
 
 def set_phaser():
     if brand_name == CODE_3:
@@ -219,6 +225,8 @@ def set_phaser():
             return sirens.Federal_Signal.Unitrol_80k.hetro()
         if fed_sig_model[13] == 1:
             return sirens.Federal_Signal.Unitrol_8001.phaser()
+        if fed_sig_model[14] == 1:
+            return sirens.Federal_Signal.Unitrol_Omega_90.hetro()
 
 def set_aux1():
     if brand_name == CODE_3:
@@ -239,6 +247,8 @@ def set_aux1():
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep2(), True]
         if fed_sig_model[13] == 1:
             return [sirens.Federal_Signal.Unitrol_8001.hilo(), True]
+        if fed_sig_model[14] == 1:
+            return [sirens.Federal_Signal.Unitrol_8001.hilo(), True]
         else:
             return [dead, False]
 def set_aux2():
@@ -253,6 +263,8 @@ def set_aux2():
         if fed_sig_model[11] == 1:
             return [sirens.Federal_Signal.Touchmaster_Touchmaster_Delta.sweep1(), True]
         if fed_sig_model[13] == 1:
+            return [sirens.Federal_Signal.Unitrol_8001.sweep(), True]
+        if fed_sig_model[14] == 1:
             return [sirens.Federal_Signal.Unitrol_8001.sweep(), True]
         else:
             return [dead, False]
