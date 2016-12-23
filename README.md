@@ -87,6 +87,16 @@ When you go to make your circuits, just connect the right button, to the right G
 #### GPIO Pins and Their Preset Functions
 If you install Piren, and don't change anything, below are preset pins and their functions. You, of course can change them, if you want. But, if you are installing on a fresh Pi and aren't using the GPIO pins for anything else, it will probably be easier to use the default ones.
 
+## Parts List
+
+These are the parts I used. Obviously, you don't need to get the *exact* buttons and wires I used, but I do recomend them. The LCD I recomend, I strongly recomended. If you buy one thing off line, I recomend it be the LCD. Reason being: it comes with a i2c backpack, which needs to be soldered on. The backpack allows you to only need 4 GPIO pins for use.
+
+- [RadioShack Momentary Pushbutton Switches (2-Pack) | $3.99](https://www.radioshack.com/collections/switches/products/pk2-spst-push-sw) x2. (I used these to switch the brand and models)
+- [RadioShack SQ No Push Switch | $3.49](https://www.radioshack.com/collections/switches/products/sq-no-push-switch) x4 (Used for the phaser and wails and other sirens.)
+- [RadioShack SPST RED Switch | $3.49](https://www.radioshack.com/collections/switches/products/spst-red-switch) x1 (Used for the horn)
+- [RadioShack Pushon/Pushoff Switch | $3.99](https://www.radioshack.com/collections/switches/products/pushon-pushoff-sw) x1 (Used as the modifier for multiple sirens.)
+- [RadioShack SPST Micromini Switch | $4.49](https://www.radioshack.com/collections/switches/products/spst-micromini-sw) x1 (Used for the wail loop)
+
 ## Sirens
 
 Piren comes loaded with many sirens that are perfectly looped and from various different brands. Below is a list of all the sirens Piren has. Special thanks to crazytaxi1000 from LCPDFR.com for providinng the sirens. You can visit his LCPDFR profile [here](http://www.lcpdfr.com/profile/167825-crazytaxi1000/) and view the [United States Siren Mega Pack](http://www.lcpdfr.com/files/file/13561-united-states-siren-mega-pack-for-sirenmastery-54-siren-models/?&tab=comments#comment-123187) on LCPDFR's website. Again, a huge thanks to him for providing the sirens!
