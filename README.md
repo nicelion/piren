@@ -15,6 +15,8 @@ Turn your Raspberry Pi into a siren box for your car! Featuring sirens from Whel
 
 Piren turns your Raspberry Pi into a siren box, like one you would see in a police car or fire truck. Piren comes with multiple sirens from different siren boxes.
 
+Check us out at [/r/piren](http://www.reddit.com/piren) on reddit!
+
 
 ## Installation
 
