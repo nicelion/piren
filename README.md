@@ -20,7 +20,18 @@ Check us out at [/r/piren](http://www.reddit.com/r/piren) on reddit!
 
 ## Installation
 
-``` not avalible```
+Installing Piren is easy, if you already have git installed on your Pi. Which should be pre-installed.
+Simply run ```git clone https://github.com/nicelion/piren.git``` and Piren will be installed! Just like that.
+
+Now you'll need to ```cd``` into the 'piren' directory. You'll then need to run the install script that installs the files that make the LCD work correctly. Enter the following into the terminal:
+
+```./install_lcd_depencencies.sh```
+
+Wait for it to install, and once you have your buttons and LCD attached to the GPIO pins, run the ```piren.py``` and test to see if it works.
+
+```sudo python3 piren.py```
+
+**NOTE:** You must use ```sudo``` to run ```piren.py```
 
 ## Requirements and Prerequisites
 
@@ -48,6 +59,52 @@ You may have to go in and change the pygame mixer initialization so the sirens s
 
 ```
 **Note:** After further inspections, this shouldn't  be a problem anymore.
+
+### Getting Piren to run when the Pi is booted
+When you install Piren, you of course are going to want to have Piren run when you first boot up your Pi. Especially because this will be in your car and you won't have a keyboard to run Piren.
+
+You will need to edit the rc.local file to run Piren at start up. Please read [this article](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md) for more information. The rc.local file is a shell file that is run every time the Pi is booted.
+
+Run the following command in the terminal:
+
+```sudo nano /etc/rc.local```
+
+(You can use any text editor, I use vim, but for this example, I use nano because that is the most common/)
+
+Nano or vim or whatever text editor you use will open and it should look like this:
+
+```
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+exit 0
+
+```
+
+You'll then need to add the following after the if statement and before the ```exit 0```:
+
+```
+cd /home/pi/piren
+sudo python3 piren.py &
+```
+
+Obviously if you have changed the directory name, you'll need to edit where you change directory to in the rc.local file. The "&" after the line that executes the python script is so that other processes can run, even before Piren exits, as Piren will not exit until a keyboard interrupt or the pi is shut down.
 
 ### Circuitry
 The following will be explained using a breadboard, howver, a breadboard should only be used for testing as connections are not always secure. Bumps and rattling from driving around could losen connections, potentially causing sirens to go off when they shouldn't. (Which may get you in legal trouble.)
