@@ -36,9 +36,8 @@ Wait for it to install, and once you have your buttons and LCD attached to the G
 ```sudo python3 piren.py```
 
 **NOTE:** You must use
-```sudo```
-to run
-```piren.py```
+
+```sudo``` to run ```piren.py```
 
 ## Requirements and Prerequisites
 
