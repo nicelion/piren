@@ -45,7 +45,9 @@ You may have to go in and change the pygame mixer initialization so the sirens s
 ```
     pygame.mixer.pre_init(48000, -16, 1, 1024)
     pygame.mixer.pre_init(48000, -16, 1, 512)
+
 ```
+**Note:** After further inspections, this shouldn't  be a problem anymore.
 
 ### Circuitry
 The following will be explained using a breadboard, howver, a breadboard should only be used for testing as connections are not always secure. Bumps and rattling from driving around could losen connections, potentially causing sirens to go off when they shouldn't. (Which may get you in legal trouble.)
