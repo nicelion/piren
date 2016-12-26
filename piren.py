@@ -15,19 +15,32 @@ from collections import deque
 import lcddriver
 
 
-# Initialize game engine
-pygame.mixer.pre_init(44100, -16, 2, 1024)  # See READEME.md for more information
+# Initialize
+pygame.mixer.pre_init(44100, -16, 1, 512)  # See READEME.md for more information
 pygame.init()
 pygame.mixer.init()
 display = lcddriver.lcd()
 
+# 'dead.wav' is a wav file, obviously, that has no sound. This is used when some siren models do not
+# have certain sounds. For example, some siren models do not have a horn. So, when the horn button is
+# pushed, the seemingly empty wav file is played. With out this, an error would be thrown.
 dead = 'dead.wav'
 
+
+# Brand and model information are put in a deque. Then, in the 'set_...' functions, seen below, the
+# appropriate sounds can be set for each type of siren. Why deques might you ask? Good question.
+# If you look below at the 'prev_...' or 'next_...' towards the bottom, you can see the 1 can be
+# moved 1 or -1 just by using the deque.rotate() function. This is extremely easier than using a
+# simple list.
+#
+# The one in the deque represents the active brand or model. See the 'set_...' functions below for a
+# little more information
 brand = deque([1, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 galls_model = deque([1, 0])
 whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0])
+
 auxiliary = False
 
 CODE_3 = 'CODE_3'
@@ -51,6 +64,7 @@ def set_brand():  # Sets the brand name for the selected siren. See above.
         return OTHER
     elif brand[5] == 1:
         return HORNS
+
 
 def set_wail():  # Sets what siren will be used for wail.
     if brand_name == CODE_3:
@@ -119,6 +133,7 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Epsilon_EPSL_1.wail()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.wail()
+
 
 def set_horn():  # Sets which sound will be used for the horn.
     if brand_name == CODE_3:
@@ -895,11 +910,7 @@ try:
 
         set_brand()
 
-
-
         sleep(0.01)
-
-
 
 
 except KeyboardInterrupt:
