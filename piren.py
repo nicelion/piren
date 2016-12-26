@@ -16,7 +16,7 @@ import lcddriver
 
 
 # Initialize game engine
-pygame.mixer.pre_init(44100, -16, 2, 512)  # See READEME.md for more information
+pygame.mixer.pre_init(44100, -16, 2, 1024)  # See READEME.md for more information
 pygame.init()
 pygame.mixer.init()
 display = lcddriver.lcd()
