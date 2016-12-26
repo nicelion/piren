@@ -28,7 +28,9 @@ Simply run
 and Piren will be installed! Just like that.
 
 Now you'll need to
+
 ```cd```
+
 into the 'piren' directory. You'll then need to run the install script that installs the files that make the LCD work correctly. Enter the following into the terminal:
 
 ```./install_lcd_depencencies.sh```
