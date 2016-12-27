@@ -21,23 +21,19 @@ Check us out at [/r/piren](http://www.reddit.com/r/piren) on reddit!
 ## Installation
 
 Installing Piren is easy, if you already have git installed on your Pi. Which should be pre-installed.
-Simply run
+Simply run `git clone https://github.com/nicelion/piren.git` and Piren will be installed! Just like that.
 
-```git clone https://github.com/nicelion/piren.git ```
-
-and Piren will be installed! Just like that.
-
-Now you'll need to ```cd``` into the 'piren' directory. You'll then need to run the install script that installs the files that make the LCD work correctly. Enter the following into the terminal:
+Now you'll need to `cd` into the `piren` directory. You'll then need to run the install script that installs the files that make the LCD work correctly. Enter the following into the terminal:
 
 ```./install_lcd_depencedncies.sh```
 
-Wait for it to install, and once you have your buttons and LCD attached to the GPIO pins, run the ```piren.py``` and test to see if it works.
+Wait for it to install, and once you have your buttons and LCD attached to the GPIO pins, run the `piren.py` and test to see if it works.
 
 ```sudo python3 piren.py```
 
 **NOTE:** You must use
 
-```sudo``` to run ```piren.py```
+`sudo` to run `piren.py`
 
 ## Requirements and Prerequisites
 
@@ -69,13 +65,13 @@ You may have to go in and change the pygame mixer initialization so the sirens s
 ### Getting Piren to run when the Pi is booted
 When you install Piren, you of course are going to want to have Piren run when you first boot up your Pi. Especially because this will be in your car and you won't have a keyboard to run Piren.
 
-You will need to edit the rc.local file to run Piren at start up. Please read [this article](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md) for more information. The rc.local file is a shell file that is run every time the Pi is booted.
+You will need to edit the `rc.local` file to run Piren at start up. Please read [this article](https://www.raspberrypi.org/documentation/linux/usage/rc-local.md) for more information. The rc.local file is a shell file that is run every time the Pi is booted.
 
 Run the following command in the terminal:
 
 ```sudo nano /etc/rc.local```
 
-(You can use any text editor, I use vim, but for this example, I use nano because that is the most common/)
+(You can use any text editor, I use vim, but for this example, I use nano because that is most commonly used as vim isn't preinstalled on the Raspberry Pi)
 
 Nano or vim or whatever text editor you use will open and it should look like this:
 
