@@ -9,10 +9,11 @@ Turn your Raspberry Pi into a siren box for your car! Featuring sirens from Whel
 * [Requirements and Prerequisites](#requirements-and-prerequisites)
     * [Software](#software)
     * [Hardware](#hardware)
+* [Parts List](#parts-list)
 * [Setup](#setup)
     * [Getting Piren to run when the Pi is booted](#getting-piren-to-run-when-the-pi-is-booted)
     * [Circuitry](#circuitry)
-* [Parts List](#parts-list)
+
 * [Sirens](#sirens)
 
 
@@ -48,6 +49,19 @@ Piren has a couple of dependencies that need to be installed before you can use 
 * Raspberry Pi 2 or newer
 * 16x2 LCD display
 * Working buttons attatched to the GPIO pins
+
+## Parts List
+
+These are the parts I used. Obviously, you don't need to get the *exact* buttons and wires I used, but I do recomend them. The LCD I recomend, I strongly recomended. If you buy one thing off line, I recomend it be the LCD. Reason being: it comes with a i2c backpack, which needs to be soldered on. The backpack allows you to only need 4 GPIO pins for use.
+
+I was able to go to a local RadioShack to get most of the buttons. Fortunately, the were going out of business, (kind of sad really) and all there stuff was 60% off. After following these links, the seem to be sold out online, but they should be available at your RadioShack.
+
+- [RadioShack Momentary Pushbutton Switches (2-Pack) | $3.99](https://www.radioshack.com/collections/switches/products/pk2-spst-push-sw) x2. (I used these to switch the brand and models)
+- [RadioShack SQ No Push Switch | $3.49](https://www.radioshack.com/collections/switches/products/sq-no-push-switch) x4 (Used for the phaser and wails and other sirens.)
+- [RadioShack SPST RED Switch | $3.49](https://www.radioshack.com/collections/switches/products/spst-red-switch) x1 (Used for the horn)
+- [RadioShack Pushon/Pushoff Switch | $3.99](https://www.radioshack.com/collections/switches/products/pushon-pushoff-sw) x1 (Used as the modifier for multiple sirens.)
+- [RadioShack SPST Micromini Switch | $4.49](https://www.radioshack.com/collections/switches/products/spst-micromini-sw) x1 (Used for the wail loop)
+
 
 ## Setup
 
@@ -151,17 +165,6 @@ When you go to make your circuits, just connect the right button, to the right G
 #### GPIO Pins and Their Preset Functions
 If you install Piren, and don't change anything, below are preset pins and their functions. You, of course can change them, if you want. But, if you are installing on a fresh Pi and aren't using the GPIO pins for anything else, it will probably be easier to use the default ones.
 
-## Parts List
-
-These are the parts I used. Obviously, you don't need to get the *exact* buttons and wires I used, but I do recomend them. The LCD I recomend, I strongly recomended. If you buy one thing off line, I recomend it be the LCD. Reason being: it comes with a i2c backpack, which needs to be soldered on. The backpack allows you to only need 4 GPIO pins for use.
-
-I was able to go to a local RadioShack to get most of the buttons. Fortunately, the were going out of business, (kind of sad really) and all there stuff was 60% off. After following these links, the seem to be sold out online, but they should be available at your RadioShack.
-
-- [RadioShack Momentary Pushbutton Switches (2-Pack) | $3.99](https://www.radioshack.com/collections/switches/products/pk2-spst-push-sw) x2. (I used these to switch the brand and models)
-- [RadioShack SQ No Push Switch | $3.49](https://www.radioshack.com/collections/switches/products/sq-no-push-switch) x4 (Used for the phaser and wails and other sirens.)
-- [RadioShack SPST RED Switch | $3.49](https://www.radioshack.com/collections/switches/products/spst-red-switch) x1 (Used for the horn)
-- [RadioShack Pushon/Pushoff Switch | $3.99](https://www.radioshack.com/collections/switches/products/pushon-pushoff-sw) x1 (Used as the modifier for multiple sirens.)
-- [RadioShack SPST Micromini Switch | $4.49](https://www.radioshack.com/collections/switches/products/spst-micromini-sw) x1 (Used for the wail loop)
 
 ## Sirens
 
