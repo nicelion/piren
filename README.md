@@ -4,12 +4,16 @@ Turn your Raspberry Pi into a siren box for your car! Featuring sirens from Whel
 ![Siren Logo](https://i.imgur.com/m5sKdwH.png)
 
 
-1. [About](#about)
-2. [Installation](#installation)
-3. [Requirements and Prerequisites](#requirements-and-prerequisites)
-⋅⋅* [Software](#software)
-4. [Setup](#setup)
-5. [Sirens](#sirens)
+* [About](#about)
+* [Installation](#installation)
+* [Requirements and Prerequisites](#requirements-and-prerequisites)
+    * [Software](#software)
+    * [Hardware](#hardware)
+* [Setup](#setup)
+    * [Getting Piren to run when the Pi is booted](#getting-piren-to-run-when-the-pi-is-booted)
+    * [Circuitry](#circuitry)
+* [Parts List](#parts-list)
+* [Sirens](#sirens)
 
 
 ## About
