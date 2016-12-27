@@ -33,9 +33,7 @@ Now you'll need to `cd` into the `piren` directory. You'll then need to run the 
 
 Wait for it to install, and once you have your buttons and LCD attached to the GPIO pins, run the `piren.py` and test to see if it works using `sudo python3 piren.py`
 
-**NOTE:** You must use
-
-`sudo` to run `piren.py`
+**NOTE:** You must use `sudo` to run `piren.py`
 
 ## Requirements and Prerequisites
 
