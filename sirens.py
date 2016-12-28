@@ -490,3 +490,5 @@ class Other:
             return 'siren/Other/Tomar 940/940yelp.wav'
         def yelp2():
             return 'siren/Other/Tomar 940/940yelp.wav'
+        def wail():
+            return 'sirens/Other/TOmar 940/940wail.wav'
