@@ -465,3 +465,34 @@ class Other:
         def yelp():
             return 'sirens/Other/Unitrol 480k/480yelp.wav'
 
+    class CHP_Moto_Sirens:
+        def wail():
+            return 'sirens/Other/CHP Motorcycle Siren/bmwwail.wav'
+        def yelp():
+            return 'sirens/Other/CHP Motorcycle Siren/bmwyelp.wav'
+
+    class Mototola_Spectra:
+        def hilo():
+            return 'sirens/Other/Mototola Spectra/spechilo.wav'
+        def horn():
+            return 'sirens/Other/Mototola Spectra/spechorn.wav'
+        def wail():
+            return 'sirens/Other/Mototola Spectra/specwail.wav'
+        def yelp():
+            return 'sirens/Other/Mototola Spectra/specyelp.wav'
+
+    class Tomar_940:
+        def alert():
+            return 'siren/Other/Tomar 940/940alert.wav'
+        def hetro():
+            return 'siren/Other/Tomar 940/940hetro.wav'
+        def hilo():
+            return 'siren/Other/Tomar 940/940hilo.wav'
+        def horn():
+            return 'siren/Other/Tomar 940/940horn.wav'
+        def phaser():
+            return 'siren/Other/Tomar 940/940phsr.wav'
+        def yelp():
+            return 'siren/Other/Tomar 940/940yelp.wav'
+        def yelp2():
+            return 'siren/Other/Tomar 940/940yelp.wav'
