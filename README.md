@@ -68,7 +68,7 @@ Piren is really cool, but unfortunately, it can take a while to set up. The soft
 Piren comes with many sirens installed, as well as some different horns you can use. Piren should be installed on your Raspberry Pi 2 or newer.
 
 You may have to go in and change the pygame mixer initialization so the sirens sound right. If the default setup does not work, try the following two:
-```
+```python
     pygame.mixer.pre_init(48000, -16, 1, 1024)
     pygame.mixer.pre_init(48000, -16, 1, 512)
 
@@ -82,13 +82,15 @@ You will need to edit the `rc.local` file to run Piren at start up. Please read 
 
 Run the following command in the terminal:
 
-```sudo nano /etc/rc.local```
+```
+sudo nano /etc/rc.local
+```
 
 (You can use any text editor, I use vim, but for this example, I use nano because that is most commonly used as vim isn't preinstalled on the Raspberry Pi)
 
 Nano or vim or whatever text editor you use will open and it should look like this:
 
-```
+```shell
 #!/bin/sh -e
 #
 # rc.local
@@ -114,7 +116,7 @@ exit 0
 
 You'll then need to add the following after the if statement and before the ```exit 0```:
 
-```
+```shell
 cd /home/pi/piren
 sudo python3 piren.py &
 ```
@@ -134,7 +136,7 @@ The following image is an example of the circuit you need to create for the butt
 
 This image is not mine, and you can find the article I used, which is really helpful, [here](http://raspi.tv/2014/rpi-gpio-update-and-detecting-both-rising-and-falling-edges), which explains a little more of whats going on in this circuit. You should of course change the GPIO pin to the correct one, which you can read more about, right below.
 
-```
+```python
 # GPIO Pin Numbers
 class pin:
     wail = 25
