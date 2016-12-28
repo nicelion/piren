@@ -405,12 +405,6 @@ class Whelen:
 
 
 class Other:
-    class Air_Horns:
-        def horn():
-            return 'sirens/Other/Air Horns/genericgrover.wav'
-        def train():
-            return 'sirens/Other/Air Horns/k5la.wav'
-    
     class AS350_Heli:
         def siren():
             return 'sirens/Other/AS350 Helicopter Siren/helisiren.wav'
