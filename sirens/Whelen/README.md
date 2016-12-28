@@ -22,4 +22,4 @@ The garage workshop in Deep River, Connecticut has grown to a bustling 242,000 s
 
 Whelen is the only US manufacturer of emergency warning equipment to still manufacture its products entirely in the United States. The use of robotics and a motivated workforce allow it to compete with off-shore products.
 
-Credit: [About Whelen](http://www.whelen.com/history), []
+Credit: [About Whelen](http://www.whelen.com/history), [Image](http://www.kdbco.com/category/whelen-engineering/)
