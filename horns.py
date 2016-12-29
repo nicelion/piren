@@ -21,7 +21,7 @@ def bad_boys():
     return 'horns/probadboys.wav'
 
 def ecto1():
-    return 'horns/proecto1.wav'
+    return 'horns/proetco1.wav'
 
 def move():
     return 'horns/promove.wav'

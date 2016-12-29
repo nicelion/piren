@@ -40,7 +40,7 @@ brand = deque([1, 0, 0, 0, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 galls_model = deque([1, 0])
-whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0])
+whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 feniex_model = deque([1, 0])
 other_model = deque([1, 0, 0, 0, 0, 0, 0, 0])
 horns_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -139,6 +139,8 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Epsilon_EPSL_1.wail()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.wail()
+        if whelen_model[9] == 1:
+            return sirens.Whelen.WSSC30.wail()
     if brand_name == FENIEX:
         if feniex_model[0] == 1:
             return sirens.Feniex.Storm_100w.wail()
@@ -256,6 +258,8 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Whelen.Epsilon_EPSL_1.horn()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.horn()
+        if whelen_model[9] == 1:
+            return sirens.Whelen.WSSC30.horn()
     if brand_name == FENIEX:
         if feniex_model[0] == 1:
             return sirens.Feniex.Storm_100w.horn()
@@ -368,6 +372,8 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Whelen.Epsilon_EPSL_1.yelp()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.warble()
+        if whelen_model[9] == 1:
+            return sirens.Whelen.WSSC30.yelp()
     if brand_name == FENIEX:
         if feniex_model[0] == 1:
             return sirens.Feniex.Storm_100w.yelp()
@@ -461,6 +467,8 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Whelen.Epsilon_EPSL_1.phaser()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.phaser()
+        if whelen_model[9] == 1:
+            return sirens.Whelen.WSSC30.phaser()
     if brand_name == FENIEX:
         if feniex_model[0] == 1:
             return sirens.Feniex.Storm_100w.phaser()
@@ -533,6 +541,8 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
             return [sirens.Whelen.Epsilon_EPSL_1.hilo(), True]
         elif whelen_model[8] == 1:
             return [sirens.Whelen.Gamma_2.riot(), True]
+        elif whelen_model[9] == 1:
+            return [sirens.Whelen.WSSC30.martian(), True]
         else:
             return [dead, False]
     if brand_name == FENIEX:
@@ -579,7 +589,10 @@ def set_aux2():
     if brand_name == GALLS:
         return [dead, False]
     if brand_name == WHELEN:
-        return [dead, False]
+        if whelen_model[9] == 1:
+            return [sirens.Whelen.WSSC30.tritone(), True]
+        else:
+            return [dead, False]
     if brand_name == FENIEX:
         if feniex_model[1] == 1:
             return [sirens.Feniex.Storm_Pro.mech(), True]
@@ -612,7 +625,10 @@ def set_aux3():
     if brand_name == GALLS:
         return [dead, False]
     if brand_name == WHELEN:
-        return [dead, False]
+        if whelen_model[9] == 1:
+            return [sirens.Whelen.WSSC30.powercall(), True]
+        else:
+            return [dead, False]
     if brand_name == FENIEX:
         if feniex_model[1] == 1:
             return [sirens.Feniex.Storm_Pro.pcall(), True]
@@ -644,7 +660,10 @@ def set_aux4():
     if brand_name == GALLS:
         return [dead, False]
     if brand_name == WHELEN:
-        return [dead, False]
+        if whelen_model[9] == 1:
+            return [sirens.Whelen.WSSC30.wail2(), True]
+        else:
+            return [dead, False]
     if brand_name == FENIEX:
         if feniex_model[1] == 1:
             return [sirens.Feniex.Storm_Pro.yelp2(), True]
@@ -753,6 +772,9 @@ def set_lcd():
             display.lcd_display_string(' Epsilon EPSL 1', 2)
         if whelen_model[8] == 1:
             display.lcd_display_string('    Gamma 2', 2)
+        if whelen_model[9] == 1:
+            display.lcd_display_string('     WSSC30', 2)
+
 
     if brand_name == FENIEX:
         if feniex_model[0] == 1:
@@ -789,7 +811,7 @@ def set_lcd():
         if horns_model[3] == 1:
              display.lcd_display_string('    Bad Boys', 2)
         if horns_model[4] == 1:
-             display.lcd_display_string('     Ecto1', 2)
+             display.lcd_display_string('     Etco1', 2)
         if horns_model[5] == 1:
              display.lcd_display_string('    Move Out', 2)
         if horns_model[6] == 1:
