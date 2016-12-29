@@ -36,13 +36,14 @@ dead = 'dead.wav'
 #
 # The one in the deque represents the active brand or model. See the 'set_...' functions below for a
 # little more information
-brand = deque([1, 0, 0, 0, 0])
+brand = deque([1, 0, 0, 0, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 galls_model = deque([1, 0])
 whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0])
 feniex_model = deque([1, 0])
 other_model = deque([1, 0, 0, 0, 0, 0, 0, 0])
+horns_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
 auxiliary = False
 
@@ -162,6 +163,29 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Other.Tomar_940.wail()
         else:
             return dead
+    if brand_name == HORNS:
+        if horns_model[0] == 1:
+            return horns.dixie_horn()
+        if horns_model[1] == 1:
+            return horns.GTA4_Horn()
+        if horns_model[2] == 1:
+            return horns.ice_cream()
+        if horns_model[3]:
+            return horns.bad_boys()
+        if horns_model[4] == 1:
+            return horns.ecto1()
+        if horns_model[5] == 1:
+            return horns.move()
+        if horns_model[6] == 1:
+            return horns.pull_over()
+        if horns_model[7] == 1:
+            return horns.rap_horn()
+        if horns_model[8] == 1:
+            return horns.trombone()
+        if horns_model[9] == 1:
+            return horns.train_horn()
+        if horns_model[10] == 1:
+            return horns.horn()
 
 
 
@@ -252,6 +276,29 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Other.Tomar_940.horn()
         else:
             return dead
+    if brand_name == HORNS:
+        if horns_model[0] == 1:
+            return horns.dixie_horn()
+        if horns_model[1] == 1:
+            return horns.GTA4_Horn()
+        if horns_model[2] == 1:
+            return horns.ice_cream()
+        if horns_model[3]:
+            return horns.bad_boys()
+        if horns_model[4] == 1:
+            return horns.ecto1()
+        if horns_model[5] == 1:
+            return horns.move()
+        if horns_model[6] == 1:
+            return horns.pull_over()
+        if horns_model[7] == 1:
+            return horns.rap_horn()
+        if horns_model[8] == 1:
+            return horns.trombone()
+        if horns_model[9] == 1:
+            return horns.train_horn()
+        if horns_model[10] == 1:
+            return horns.horn()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -343,6 +390,8 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Other.Tomar_940.yelp()
         else:
             return dead
+    if brand_name == HORNS:
+        return dead
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -433,7 +482,8 @@ def set_phaser():  # Sets which sound will be used for the phaser
         else:
             return dead
 
-
+    if brand_name == HORNS:
+        return dead
 
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
@@ -501,6 +551,8 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
             return [sirens.Other.Tomar_940.alert(), True]
         else:
             return [dead, False]
+    if brand_name == HORNS:
+        return [dead, False]
 
 def set_aux2():
     # Returns a list: [Str, Bool]
@@ -540,6 +592,8 @@ def set_aux2():
             return [sirens.Other.Tomar_940.hetro(), True]
         else:
             return [dead, False]
+    if brand_name == HORNS:
+        return [dead, False]
 
 
 def set_aux3():
@@ -571,6 +625,8 @@ def set_aux3():
             return [sirens.Other.Tomar_940.hilo(), True]
         else:
             return [dead, False]
+    if brand_name == HORNS:
+        return [dead, False]
 
 def set_aux4():
     # Returns a list: [Str, Bool]
@@ -601,6 +657,8 @@ def set_aux4():
             return [sirens.Other.Tomar_940.yelp2(), True]
         else:
             return [dead, False]
+    if brand_name == HORNS:
+        return [dead, False]
 
 
 brand_name = set_brand()
@@ -721,7 +779,29 @@ def set_lcd():
         if other_model[7] == 1:
             display.lcd_display_string('   Tomar 940', 2)
 
-
+    if brand_name == HORNS:
+        if horns_model[0] == 1:
+            display.lcd_display_string('   Dixie Horn', 2)
+        if horns_model[1] == 1:
+             display.lcd_display_string(' Liberty City', 2)
+        if horns_model[2] == 1:
+             display.lcd_display_string('Ice Cream Truck', 2)
+        if horns_model[3] == 1:
+             display.lcd_display_string('    Bad Boys', 2)
+        if horns_model[4] == 1:
+             display.lcd_display_string('     Ecto1', 2)
+        if horns_model[5] == 1:
+             display.lcd_display_string('    Move Out', 2)
+        if horns_model[6] == 1:
+             display.lcd_display_string('   Pull Over', 2)
+        if horns_model[7] == 1:
+             display.lcd_display_string('    Rap Horn', 2)
+        if horns_model[8] == 1:
+             display.lcd_display_string('  Sad Trombone', 2)
+        if horns_model[9] == 1:
+             display.lcd_display_string('  Train Horn', 2)
+        if horns_model[10] == 1:
+             display.lcd_display_string('      Horn', 2)
 
 
 
@@ -890,7 +970,8 @@ def next_selection(channel):
             feniex_model.rotate(11)            
         elif brand_name == OTHER:
             other_model.rotate(1)
-
+        elif brand_name == HORNS:
+            horns_model.rotate(1)
         # # print(setup.fed_sig_model)
         wail.stop()
         horn.stop()
@@ -934,6 +1015,9 @@ def prev_selection(channel):
             feniex_model.rotate(-1)
         elif brand_name == OTHER:
             other_model.rotate(-1)
+        elif brand_name == HORNS:
+            horns_model.rotate(-1)
+
 
         wail.stop()
         horn.stop()
