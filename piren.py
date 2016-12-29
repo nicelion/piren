@@ -13,6 +13,7 @@ from time import sleep
 import setup
 from collections import deque
 import lcddriver
+import horns
 
 
 # Initialize
@@ -35,11 +36,12 @@ dead = 'dead.wav'
 #
 # The one in the deque represents the active brand or model. See the 'set_...' functions below for a
 # little more information
-brand = deque([1, 0, 0, 0])
+brand = deque([1, 0, 0, 0, 0])
 fed_sig_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 code_3_model = deque([1, 0, 0, 0, 0])
 galls_model = deque([1, 0])
 whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0])
+other_model = deque([1, 0, 0, 0, 0, 0, 0, 0])
 
 auxiliary = False
 
@@ -133,6 +135,26 @@ def set_wail():  # Sets what siren will be used for wail.
             return sirens.Whelen.Epsilon_EPSL_1.wail()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.wail()
+    if brand_name == OTHER:
+        if other_model[0] == 1:
+            return sirens.Other.AS350_Heli.siren()
+        elif other_model[1] == 1:
+            return sirens.Other.Carson_SA441.wail()
+        elif other_model[2] == 1:
+            return sirens.Other.NA_SI100M.wail()
+        elif other_model[3] == 1:
+            return sirens.Other.Powercall_DX5.wail()
+        elif other_model[4] == 1:
+            return sirens.Other.Unitrol_480k.wail()
+        elif other_model[5] == 1:
+            return sirens.Other.CHP_Moto_Sirens.wail()
+        elif other_model[6] == 1:
+            return sirens.Other.Mototola_Spectra.wail()
+        elif other_model[7] == 1:
+            return sirens.Other.Tomar_940.wail()
+        else:
+            return dead
+
 
 
 def set_horn():  # Sets which sound will be used for the horn.
@@ -202,6 +224,21 @@ def set_horn():  # Sets which sound will be used for the horn.
             return sirens.Whelen.Epsilon_EPSL_1.horn()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.horn()
+    if brand_name == OTHER:
+        if other_model[1] == 1:
+            return sirens.Other.Carson_SA441.horn()
+        elif other_model[2] == 1:
+            return sirens.Other.NA_SI100M.hilo()
+        elif other_model[3] == 1:
+            return sirens.Other.Powercall_DX5.horn()
+        elif other_model[4] == 1:
+            return sirens.Other.Unitrol_480k.horn()
+        elif other_model[6] == 1:
+            return sirens.Other.Mototola_Spectra.horn()
+        elif other_model[7] == 1:
+            return sirens.Other.Tomar_940.horn()
+        else:
+            return dead
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -271,6 +308,23 @@ def set_yelp():  # Sets which sound will be used for yelp
             return sirens.Whelen.Epsilon_EPSL_1.yelp()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.warble()
+    if brand_name == OTHER:
+        if other_model[1] == 1:
+            return sirens.Other.Carson_SA441.yelp()
+        elif other_model[2] == 1:
+            return sirens.Other.NA_SI100M.yelp()
+        elif other_model[3] == 1:
+            return sirens.Other.Powercall_DX5.yelp()
+        elif other_model[4] == 1:
+            return sirens.Other.Unitrol_480k.yelp()
+        elif other_model[5] == 1:
+            return sirens.Other.CHP_Moto_Sirens.yelp()
+        elif other_model[6] == 1:
+            return sirens.Other.Mototola_Spectra.yelp()
+        elif other_model[7] == 1:
+            return sirens.Other.Tomar_940.yelp()
+        else:
+            return dead
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -340,12 +394,32 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return sirens.Whelen.Epsilon_EPSL_1.phaser()
         if whelen_model[8] == 1:
             return sirens.Whelen.Gamma_2.phaser()
+    if brand_name == OTHER:
+        if other_model[1] == 1:
+            return sirens.Other.Carson_SA441.phaser()
+        elif other_model[2] == 1:
+            return sirens.Other.NA_SI100M.riot()
+        elif other_model[3] == 1:
+            return sirens.Other.Powercall_DX5.phaser()
+        elif other_model[4] == 1:
+            return sirens.Other.Unitrol_480k.hilo()
+        elif other_model[6] == 1:
+            return sirens.Other.Mototola_Spectra.hilo()
+        elif other_model[7] == 1:
+            return sirens.Other.Tomar_940.phaser()
+        else:
+            return dead
+
+
+
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
+
     # Returns a list: [Str, Bool]
     # The first element returned is the string to the auxillary sound,
     # The second being a bool, which will indicate if the selected
     # siren has an auxiliary siren.
+
     if brand_name == CODE_3:
         if code_3_model[2] == 1:
             return [sirens.Code_3.Mastercom_B.hilo(), True]
@@ -388,6 +462,15 @@ def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. 
             return [sirens.Whelen.Gamma_2.riot(), True]
         else:
             return [dead, False]
+    if brand_name == OTHER:
+        if other_model[1]:
+            return [sirens.Other.Carson_SA441.hilo(), True]
+        elif other_model[3] == 1:
+            return [sirens.Other.Powercall_DX5.hilo(), True]
+        elif other_model[7] == 1:
+            return [sirens.Other.Tomar_940.alert(), True]
+        else:
+            return [dead, False]
 
 def set_aux2():
     # Returns a list: [Str, Bool]
@@ -415,6 +498,13 @@ def set_aux2():
         return [dead, False]
     if brand_name == WHELEN:
         return [dead, False]
+    if brand_name == OTHER:
+        if other_model[3] == 1:
+            return [sirens.Other.Powercall_DX5.inter(), True]
+        elif other_model[7] == 1:
+            return [sirens.Other.Tomar_940.hetro(), True]
+        else:
+            return [dead, False]
 
 
 def set_aux3():
@@ -434,6 +524,13 @@ def set_aux3():
         return [dead, False]
     if brand_name == WHELEN:
         return [dead, False]
+    if brand_name == OTHER:
+        if other_model[3] == 1:
+            return [sirens.Other.Powercall_DX5.pcall(), True]
+        elif other_model[7] == 1:
+            return [sirens.Other.Tomar_940.hilo(), True]
+        else:
+            return [dead, False]
 
 def set_aux4():
     # Returns a list: [Str, Bool]
@@ -452,6 +549,14 @@ def set_aux4():
         return [dead, False]
     if brand_name == WHELEN:
         return [dead, False]
+    if brand_name == OTHER:
+        if other_model[3] == 1:
+            return [sirens.Other.Powercall_DX5.pcall2(), True]
+        elif other_model[7] == 1:
+            return [sirens.Other.Tomar_940.yelp2(), True]
+        else:
+            return [dead, False]
+
 
 brand_name = set_brand()
 
@@ -543,6 +648,26 @@ def set_lcd():
             display.lcd_display_string(' Epsilon EPSL 1', 2)
         if whelen_model[8] == 1:
             display.lcd_display_string('    Gamma 2', 2)
+    if brand_name == OTHER:
+        if other_model[0] == 1:
+            display.lcd_display_string('AS350 Helicopter', 2)
+        if other_model[1] == 1:
+            display.lcd_display_string('  Carson SA441', 2)
+        if other_model[2] == 1:
+            display.lcd_display_string('   N.A. SI100', 2)
+        if other_model[3] == 1:
+            display.lcd_display_string(' Powercall DX5', 2)
+        if other_model[4] == 1:
+            display.lcd_display_string('  Unitrol 480k', 2)
+        if other_model[5] == 1:
+            display.lcd_display_string(' CHP Motorcycle', 2)
+        if other_model[6] == 1:
+            display.lcd_display_string('Mototola Spectra', 2)
+        if other_model[7] == 1:
+            display.lcd_display_string('   Tomar 940', 2)
+
+
+
 
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
@@ -705,6 +830,8 @@ def next_selection(channel):
             galls_model.rotate(1)
         elif brand_name == WHELEN:
             whelen_model.rotate(1)
+        elif brand_name == OTHER:
+            other_model.rotate(1)
 
         # # print(setup.fed_sig_model)
         wail.stop()
@@ -745,6 +872,8 @@ def prev_selection(channel):
             galls_model.rotate(-1)
         elif brand_name == WHELEN:
             whelen_model.rotate(-1)
+        elif brand_name == OTHER:
+            other_model.rotate(-1)
 
         wail.stop()
         horn.stop()

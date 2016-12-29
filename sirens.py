@@ -409,17 +409,17 @@ class Other:
         def siren():
             return 'sirens/Other/AS350 Helicopter Siren/helisiren.wav'
 
-    class Carson_SA411:
+    class Carson_SA441:
         def hilo():
-            return 'sirens/Other/Carson SA411/sa411hilo.wav'
+            return 'sirens/Other/Carson SA441/sa441hilo.wav'
         def horn():
-            return 'sirens/Other/Carson SA411/sa411horn.wav'
+            return 'sirens/Other/Carson SA441/sa441horn.wav'
         def phaser():
-            return 'sirens/Other/Carson SA411/sa411phaser.wav'
+            return 'sirens/Other/Carson SA441/sa441phsr.wav'
         def wail():
-            return 'sirens/Other/Carson SA411/sa411wail.wav'
+            return 'sirens/Other/Carson SA441/sa441wail.wav'
         def yelp():
-            return 'sirens/Other/Carson SA411/sa411yelp.wav'
+            return 'sirens/Other/Carson SA441/sa441yelp.wav'
 
     class NA_SI100M:
         def hilo():
@@ -477,18 +477,18 @@ class Other:
 
     class Tomar_940:
         def alert():
-            return 'siren/Other/Tomar 940/940alert.wav'
+            return 'sirens/Other/Tomar 940/940alert.wav'
         def hetro():
-            return 'siren/Other/Tomar 940/940hetro.wav'
+            return 'sirens/Other/Tomar 940/940hetro.wav'
         def hilo():
-            return 'siren/Other/Tomar 940/940hilo.wav'
+            return 'sirens/Other/Tomar 940/940hilo.wav'
         def horn():
-            return 'siren/Other/Tomar 940/940horn.wav'
+            return 'sirens/Other/Tomar 940/940horn.wav'
         def phaser():
-            return 'siren/Other/Tomar 940/940phsr.wav'
+            return 'sirens/Other/Tomar 940/940phsr.wav'
         def yelp():
-            return 'siren/Other/Tomar 940/940yelp.wav'
+            return 'sirens/Other/Tomar 940/940yelp.wav'
         def yelp2():
-            return 'siren/Other/Tomar 940/940yelp.wav'
+            return 'sirens/Other/Tomar 940/940yelp.wav'
         def wail():
-            return 'sirens/Other/TOmar 940/940wail.wav'
+            return 'sirens/Other/Tomar 940/940wail.wav'
