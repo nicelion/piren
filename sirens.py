@@ -403,6 +403,39 @@ class Whelen:
         def wail2():
             return 'sirens/Whelen/WSSC30/c30wail2.wav'
 
+class Feniex:
+    class Storm_100w:
+        def horn():
+            return 'sirens/Feniex/Storm 100w/stormhorn.wav'
+        def mech():
+            return 'sirens/Feniex/Storm 100w/stormmech.wav'
+        def phaser():
+            return 'sirens/Feniex/Storm 100w/stormphsr.wav'
+        def wail():
+            return 'sirens/Feniex/Storm 100w/stormwail.wav'
+        def yelp():
+            return 'sirens/Feniex/Storm 100w/stormyelp.wav'
+
+    class Storm_Pro:
+        def hilo():
+            return 'sirens/Feniex/Storm Pro 200w/prohilo.wav'
+        def horn():
+            return 'sirens/Feniex/Storm Pro 200w/prohorn.wav'
+        def mech():
+            return 'sirens/Feniex/Storm Pro 200w/promech.wav'
+        def pcall():
+            return 'sirens/Feniex/Storm Pro 200w/propcall.wav'
+        def pcallp():
+            return 'sirens/Feniex/Storm Pro 200w/propcallpwav'
+        def phaser():
+            return 'sirens/Feniex/Storm Pro 200w/prophsr.wav'
+        def wail():
+            return 'sirens/Feniex/Storm Pro 200w/prowail.wav'
+        def yelp():
+            return 'sirens/Feniex/Storm Pro 200w/proyelp.wav'
+        def yelp2():
+            return 'sirens/Feniex/Storm Pro 200w/proyelp2.wav'
+
 
 class Other:
     class AS350_Heli:
