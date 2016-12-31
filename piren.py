@@ -827,6 +827,8 @@ def set_lcd():
 
 
 
+
+
 horn = pygame.mixer.Sound(set_horn())
 wail = pygame.mixer.Sound(set_wail())
 m_wail = pygame.mixer.Sound(set_wail())
@@ -893,9 +895,13 @@ def play_wail(channel):
         wail.play(-1)
         wail_playing = True
 
+        m_wail.set_volume(0)
+
     else:
         wail.stop()
         wail_playing = False
+        m_wail.set_volume(1)
+
 
 
 def play_horn(channel):
@@ -905,13 +911,25 @@ def play_horn(channel):
             aux1.play(-1)
         else:
             horn.play(-1)
-            wail.set_volume(0.25)
+            wail.set_volume(0)
+            phaser.set_volume(0)
+            yelp.stop()
+
+            m_wail.stop()
+
             horn_playing = True
     else:
         if auxiliary and aux1_is_usable:
             aux1.stop()
         else:
+            if yelp_playing:
+                yelp.play(-1)
+
+            if manual_wail_playing:
+                m_wail.play(-1)
+
             horn.stop()
+            phaser.set_volume(1)
             wail.set_volume(1)
             horn_playing = False
 
@@ -923,14 +941,18 @@ def play_phaser(channel):
             aux2.play(-1)
         else:
             phaser.play(-1)
-            wail.set_volume(0.25)
+
+            wail.set_volume(0)
+
             phaser_playing = True
     else:
         if auxiliary and aux2_is_usable:
             aux2.stop()
         else:
-            phaser.stop()
+
             wail.set_volume(1)
+
+            phaser.stop()
             phaser_playing = False
 
 
@@ -980,10 +1002,8 @@ def next_selection(channel):
         global aux3, aux3_is_usable, aux4, aux4_is_usable
         if brand_name == FED_SIG:
             fed_sig_model.rotate(1)
-            print('rotated fed sig 1')
         elif brand_name == CODE_3:
             code_3_model.rotate(1)
-            print('rotated code 3 1')
         elif brand_name == GALLS:
             galls_model.rotate(1)
         elif brand_name == WHELEN:
@@ -1025,10 +1045,8 @@ def prev_selection(channel):
         global aux3, aux3_is_usable, aux4, aux4_is_usable
         if brand_name == FED_SIG:
             fed_sig_model.rotate(-1)
-            print('rotated fed sig -1')
         elif brand_name == CODE_3:
             code_3_model.rotate(-1)
-            print('rotated code 3 -1')
         elif brand_name == GALLS:
             galls_model.rotate(-1)
         elif brand_name == WHELEN:
@@ -1098,7 +1116,6 @@ def next_brand(channel):
 
 
 
-        print(brand)
 
 def prev_brand(channel):
     if GPIO.input(pin.prev_brand):
@@ -1130,7 +1147,6 @@ def prev_brand(channel):
 
         set_lcd()
         set_brand()
-        print(brand)
 
 def set_auxillary(channel):
     global auxiliary
