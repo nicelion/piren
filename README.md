@@ -28,7 +28,7 @@ Check us out at [/r/piren](http://www.reddit.com/r/piren) on reddit!
 Installing Piren is easy, if you already have git installed on your Pi. Which should be pre-installed.
 Simply run `git clone https://github.com/nicelion/piren.git` and Piren will be installed! Just like that.
 
-Now you'll need to `cd` into the `piren` directory. You'll then need to run the install script that installs the files that make the LCD work correctly. Enter `./install_lcd_depencedncies.sh` into the terminal. Your Pi will update, install the packages, and then reboot.
+Now you'll need to `cd` into the `piren` directory. You'll then need to run the install script that installs the files that make the LCD work correctly as well as install a couple other programs that Piren requires. Take a look at the script before you run it. You can trust me, but just get in the habit. Its good practice. Enter `./piren-setup.sh` into the terminal. Your Pi will update, install the packages, and then reboot.
 
 Wait for it to install, and once you have your buttons and LCD attached to the GPIO pins, run the `piren.py` and test to see if it works using `sudo python3 piren.py`
 
