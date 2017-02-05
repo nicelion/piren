@@ -1,0 +1,39 @@
+[
+    {
+        "pins": {
+            "aux": 26,
+            "aux_led": 20,
+            "horn": 24,
+            "manual_wail": 27,
+            "next": 17,
+            "next_brand": 11,
+            "phaser": 18,
+            "prev_brand": 8,
+            "previous": 9,
+            "siren_led": 12,
+            "wail": 99,
+            "yelp": 5
+        },
+        "settings": {
+            "reverse": true
+        },
+        "sirens": {
+            "siren1": {
+                "brand": "Code 3",
+                "horn": "sirens/Code 3/3932 Scorpion/3932horn.wav",
+                "model": "3932 Scorpion",
+                "phaser": "sirens/Code 3/3932 Scorpion/3932phaser.wav",
+                "wail": "sirens/Code 3/3932 Scorpion/3932wail.wav",
+                "yelp": "sirens/Code 3/3932 Scorpion/3932yelp.wav"
+            },
+            "siren2": {
+                "brand": "Code 3",
+                "horn": "sirens/Code 3/Mastercom/mchorn.wav",
+                "model": "Mastercom",
+                "phaser": "sirens/Code 3/Mastercom/mcphaser.wav",
+                "wail": "sirens/Code 3/Mastercom/mcwail.wav",
+                "yelp": "sirens/Code 3/Mastercom/mcyelp.wav"
+            }
+        }
+    }
+]
