@@ -13,6 +13,7 @@ Turn your Raspberry Pi into a siren box for your car! Featuring sirens from Whel
 * [Setup](#setup)
     * [Getting Piren to run when the Pi is booted](#getting-piren-to-run-when-the-pi-is-booted)
     * [Circuitry](#circuitry)
+* [piren-config](#piren-config)
 * [Sirens](#sirens)
 
 
@@ -164,6 +165,13 @@ When you go to make your circuits, just connect the right button, to the right G
 #### GPIO Pins and Their Preset Functions
 If you install Piren, and don't change anything, below are preset pins and their functions. You, of course can change them, if you want. But, if you are installing on a fresh Pi and aren't using the GPIO pins for anything else, it will probably be easier to use the default ones.
 
+## piren-config
+
+### About
+piren-config is a python script that allows you to easily add more sirens and horns, create presets, change veriables, and even change GPIO pin functions without having to go into the code and changing it yourself. piren-config is currently in BETA.
+
+### How To Run
+First, change into the piren directory. Then type `sudo python3 piren-config.py` and piren-config will run.
 
 ## Sirens
 
