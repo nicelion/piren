@@ -34,6 +34,18 @@
                 "phaser": "sirens/Code 3/Mastercom/mcphaser.wav",
                 "wail": "sirens/Code 3/Mastercom/mcwail.wav",
                 "yelp": "sirens/Code 3/Mastercom/mcyelp.wav"
+            },
+            "siren3": {
+                "aux1": "sirens/Code 3/Mastercom B/mcbhylo.wav",
+                "aux2": "sirens/Code 3/Mastercom B/mcbhilo.wav",
+                "aux3": "dead.wav",
+                "aux4": "dead.wav",
+                "horn": "sirens/Code 3/Mastercom B/mcbhorn.wav",
+                "model": "Mastercom B",
+                "name": "Code 3",
+                "phaser": "sirens/Code 3/Mastercom B/mcbHyelp.wav",
+                "wail": "sirens/Code 3/Mastercom B/mcbwail.wav",
+                "yelp": "sirens/Code 3/Mastercom B/mcbyelp.wav"
             }
         }
     }
