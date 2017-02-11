@@ -2,7 +2,7 @@ import json
 import os
 
 config = []
-commands = ["help", "end", "exit", "quit", "pin"]
+commands = ["help", "end", "exit", "quit", "pin", "siren"]
 
 # These pins are unavailable to be used by the Pi because they already have preset functions
 invalid_pins = {1: "3.3v DC Power pin", 2: "5v DC Power pin", 4: "5v DC Power pin", 6: "Ground", 9: "Ground",
@@ -34,7 +34,9 @@ def load():
         config.append(d)
 
         occupied_pins = d[0]["pins"].values()
-        print(45 in occupied_pins)
+
+        print(len(d[0]["sirens"]))
+
 
 
 
@@ -434,6 +436,113 @@ def pin():
         mprint(Colors.FAIL + "[ERROR]: " + Colors.ENDC + com + " not vaild. Please try again.")
         pin()
 
+def check_path(path):
+    if os.path.exists(path):
+        return True
+    else:
+        return False
+
+def add_siren():
+    dead = "dead.wav"
+
+    print("\nYou will be asked to provide information on the siren you would like to add. You will be asked the "
+          "brand name, model name, and paths to all the sirens.\nFor example, the program will ask you for the wail"
+          " siren path. If your siren does not have a wail, you can replace it with something else. You do not need "
+          "to provide a wail siren path when it asks you to provide a wail path. Whatever sound you add, will play when"
+          " the wail button is pushed. Take a look at the read me for more information.\n")
+
+    brand = input("Enter brand name: ")
+
+    model = input("Enter model: ")
+
+    wail = input("Path to wail: ")
+
+    if check_path(wail):
+        pass
+    else:
+        print("'" + wail + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                           " to add.")
+        add_siren()
+
+    yelp = input("Path to yelp: ")
+
+    if check_path(yelp):
+        pass
+    else:
+        print("'" + yelp + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                           " to add.")
+        add_siren()
+
+    horn = input("Path to horn: ")
+
+    if check_path(horn):
+        pass
+    else:
+        print("'" + horn + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                           " to add.")
+        add_siren()
+
+    phaser = input("Path to phaser: ")
+
+    if check_path(phaser):
+        pass
+    else:
+        print("'" + phaser + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                           " to add.")
+        add_siren()
+
+    aux1 = input("Path to aux1 (If none, return): ")
+
+    if aux1 == "":
+        aux1 = dead
+    else:
+        if check_path(aux1):
+            aux1 = dead
+
+        else:
+            print("'" + yelp + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
+
+    aux2 = input("Path to aux2 (If none, return): ")
+    if aux2 == "":
+        aux2 = dead
+    else:
+        if check_path(aux2):
+            pass
+        else:
+            print("'" + aux2 + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
+
+    aux3 = input("Path to aux3 (If none, return): ")
+    if aux3 == "":
+        aux3 = dead
+    else:
+        if check_path(aux3):
+            pass
+        else:
+            print("'" + aux3 + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                           " to add.")
+            add_siren()
+
+    aux4 = input("Path to aux4 (If none, return): ")
+    if aux4 == "":
+        aux4 = dead
+    else:
+
+        if check_path(aux4):
+            pass
+        else:
+            print("'" + aux4 + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
+
+    print([brand, model, wail, yelp, horn, aux1, aux2, aux3, aux4])
+
+
+
+
 
 def get_command():
     comm = input(Colors.WHITE + "Enter a command to get started: " + Colors.ENDC)
@@ -446,6 +555,8 @@ def get_command():
             pass
         if comm == commands[4]:
             pin()
+        if comm == commands[5]:
+            add_siren()
 
     else:
         mprint(Colors.BOLD + Colors.WARNING + "[ERROR]: " + Colors.ENDC + "Command '" + comm + "' not valid. Pass 'help'"
