@@ -11,7 +11,7 @@
             "prev_brand": 8,
             "previous": 9,
             "siren_led": 12,
-            "wail": 25,
+            "wail": 23,
             "yelp": 5
         },
         "settings": {
@@ -34,6 +34,42 @@
                 "phaser": "sirens/Code 3/Mastercom/mcphaser.wav",
                 "wail": "sirens/Code 3/Mastercom/mcwail.wav",
                 "yelp": "sirens/Code 3/Mastercom/mcyelp.wav"
+            },
+            "siren3": {
+                "aux1": "dead.wav",
+                "aux2": "dead.wav",
+                "aux3": "dead.wav",
+                "aux4": "dead.wav",
+                "horn": "dead.wav",
+                "model": "Siren",
+                "name": "Whelen",
+                "phaser": "dead.wav",
+                "wail": "dead.wav",
+                "yelp": "dead.wav"
+            },
+            "siren4": {
+                "aux1": "dead.wav",
+                "aux2": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png",
+                "aux3": "dead.wav",
+                "aux4": "dead.wav",
+                "horn": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png",
+                "model": "EQ2B2",
+                "name": "Federal Signal",
+                "phaser": "dead.wav",
+                "wail": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png",
+                "yelp": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png"
+            },
+            "siren5": {
+                "aux1": "dead.wav",
+                "aux2": "dead.wav",
+                "aux3": "dead.wav",
+                "aux4": "dead.wav",
+                "horn": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png",
+                "model": "ksdjfg",
+                "name": "Apple",
+                "phaser": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png",
+                "wail": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png",
+                "yelp": "/Users/ianthompson/Desktop/shiftpwm_74hc595_RGB-638x763.png"
             }
         }
     }

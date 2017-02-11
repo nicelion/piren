@@ -30,12 +30,21 @@ def mprint(s):
 def load():
     global d, occupied_pins, config
     with open('config.json') as json_data:
-        d = json.load(json_data)
-        config.append(d)
+        d = json_data.read()
 
-        occupied_pins = d[0]["pins"].values()
+    config = json.loads(d)
 
-        print(len(d[0]["sirens"]))
+    # print(config)
+
+        # config.append(d)
+        #
+        # occupied_pins = d[0]["pins"].values()
+        #
+        # print(len(d[0]["sirens"]))
+        #
+        # print(d)
+
+
 
 
 
@@ -65,10 +74,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(wail) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["wail"] = int(wail)
+                config[0]["pins"]["wail"] = int(wail)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed wail pin to " + str(wail))
                 get_command()
@@ -97,10 +106,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(aux) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["aux"] = int(aux)
+                config[0]["pins"]["aux"] = int(aux)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed wail pin to " + str(aux))
                 get_command()
@@ -129,10 +138,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(aux_led) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["aux_led"] = int(aux_led)
+                config[0]["pins"]["aux_led"] = int(aux_led)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed wail pin to " + str(aux_led))
                 get_command()
@@ -161,10 +170,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(horn) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["horn"] = int(horn)
+                config[0]["pins"]["horn"] = int(horn)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed wail pin to " + str(horn))
                 get_command()
@@ -193,10 +202,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(horn) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["manual_wail"] = int(manual_wail)
+                config[0]["pins"]["manual_wail"] = int(manual_wail)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed manual_wail pin to " + str(manual_wail))
                 get_command()
@@ -225,10 +234,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(next) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["next"] = int(next)
+                config[0]["pins"]["next"] = int(next)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed next pin to " + str(next))
                 get_command()
@@ -256,10 +265,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(next_brand) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["next_brand"] = int(next_brand)
+                config[0]["pins"]["next_brand"] = int(next_brand)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed next_brand pin to " + str(next_brand))
                 get_command()
@@ -288,10 +297,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(phaser) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["phaser"] = int(phaser)
+                config[0]["pins"]["phaser"] = int(phaser)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed phaser pin to " + str(phaser))
                 get_command()
@@ -320,10 +329,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(horn) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["prev_brand"] = int(prev_brand)
+                config[0]["pins"]["prev_brand"] = int(prev_brand)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed prev_brand pin to " + str(prev_brand))
                 get_command()
@@ -344,7 +353,7 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(previous) + " already assigned. Please select a "
                                                                             "different pin number")
                 pin()
-            elif int(manual_wail) in occupied_pins:
+            elif int(previous) in occupied_pins:
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(previous) + " already assigned. Please select a "
                                                                             "different pin number")
                 pin()
@@ -352,10 +361,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(previous) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["previous"] = int(previous)
+                config[0]["pins"]["previous"] = int(previous)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed previous pin to " + str(previous))
                 get_command()
@@ -384,10 +393,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(siren_led) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["siren_led"] = int(siren_led)
+                config[0]["pins"]["siren_led"] = int(siren_led)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed siren_led pin to " + str(siren_led))
                 get_command()
@@ -416,10 +425,10 @@ def pin():
                 mprint(Colors.FAIL + "[ERROR]:" + Colors.ENDC + str(yelp) + " out of range. 1-40 are acceptable numbers")
                 pin()
             else:
-                d[0]["pins"]["yelp"] = int(yelp)
+                config[0]["pins"]["yelp"] = int(yelp)
 
                 with open('config.json', 'w') as outfile:
-                    json.dump(d, outfile, indent=4, sort_keys=True)
+                    json.dump(config, outfile, indent=4, sort_keys=True)
 
                 mprint(Colors.OKGREEN + "[SUCCESS]: " + Colors.ENDC + "Successfuly changed yelp pin to " + str(yelp))
                 get_command()
@@ -455,41 +464,49 @@ def add_siren():
 
     model = input("Enter model: ")
 
-    wail = input("Path to wail: ")
-
-    if check_path(wail):
-        pass
+    wail = input("Path to wail (If none, return): ")
+    if wail == "":
+        wail = dead
     else:
-        print("'" + wail + "' is not a valid path. Please be sure to add the sound files first, then use this program"
-                           " to add.")
-        add_siren()
+        if check_path(wail):
+            pass
+        else:
+            print("'" + wail + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
 
-    yelp = input("Path to yelp: ")
-
-    if check_path(yelp):
-        pass
+    yelp = input("Path to yelp (If none, return): ")
+    if yelp == "":
+        yelp = dead
     else:
-        print("'" + yelp + "' is not a valid path. Please be sure to add the sound files first, then use this program"
-                           " to add.")
-        add_siren()
+        if check_path(yelp):
+            pass
+        else:
+            print("'" + yelp + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
 
-    horn = input("Path to horn: ")
-
-    if check_path(horn):
-        pass
+    horn = input("Path to horn (If none, return): ")
+    if horn == "":
+        horn = dead
     else:
-        print("'" + horn + "' is not a valid path. Please be sure to add the sound files first, then use this program"
-                           " to add.")
-        add_siren()
+        if check_path(horn):
+            pass
+        else:
+            print("'" + horn + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
 
-    phaser = input("Path to phaser: ")
-
-    if check_path(phaser):
-        pass
+    phaser = input("Path to phaser (If none, return): ")
+    if phaser == "":
+        phaser = dead
     else:
-        print("'" + phaser + "' is not a valid path. Please be sure to add the sound files first, then use this program"
-                           " to add.")
-        add_siren()
+        if check_path(phaser):
+            pass
+        else:
+            print("'" + phaser + "' is not a valid path. Please be sure to add the sound files first, then use this program"
+                               " to add.")
+            add_siren()
 
     aux1 = input("Path to aux1 (If none, return): ")
 
@@ -539,6 +556,22 @@ def add_siren():
             add_siren()
 
     print([brand, model, wail, yelp, horn, aux1, aux2, aux3, aux4])
+
+    confirm = input("Do you want to add this siren? (y/n): ")
+
+    if confirm == 'y':
+
+        key = "siren" + str(len(config[0]['sirens']) + 1)
+        siren = {"name": brand, "model": model, "horn": horn, "phaser": phaser, "wail": wail,
+                 "yelp": yelp, "aux1": aux1, "aux2": aux2, "aux3": aux3, "aux4": aux4}
+
+        config[0]["sirens"][key] = siren
+
+        with open('config.json', 'w') as outfile:
+                    json.dump(config, outfile, indent=4, sort_keys=True)
+
+    elif confirm == 'n':
+        get_command()
 
 
 
