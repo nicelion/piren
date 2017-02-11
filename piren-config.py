@@ -451,6 +451,23 @@ def check_path(path):
     else:
         return False
 
+def get_confirmation():
+    global loop
+    loop = True
+
+    while loop:
+        confirm = input("Do you want to add this siren? (y/n): ")
+
+        if confirm == "y":
+            loop = False
+            return True
+        elif confirm == "n":
+            loop = False
+            return False
+        else:
+            pass
+
+
 def add_siren():
     dead = "dead.wav"
 
@@ -557,9 +574,8 @@ def add_siren():
 
     print([brand, model, wail, yelp, horn, aux1, aux2, aux3, aux4])
 
-    confirm = input("Do you want to add this siren? (y/n): ")
 
-    if confirm == 'y':
+    if get_confirmation():
 
         key = "siren" + str(len(config[0]['sirens']) + 1)
         siren = {"name": brand, "model": model, "horn": horn, "phaser": phaser, "wail": wail,
@@ -570,7 +586,9 @@ def add_siren():
         with open('config.json', 'w') as outfile:
                     json.dump(config, outfile, indent=4, sort_keys=True)
 
-    elif confirm == 'n':
+        get_command()
+
+    elif not get_confirmation():
         get_command()
 
 
