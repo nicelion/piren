@@ -11,11 +11,12 @@
             "prev_brand": 8,
             "previous": 9,
             "siren_led": 12,
-            "wail": 99,
+            "wail": 25,
             "yelp": 5
         },
         "settings": {
-            "reverse": true
+            "reverse": false,
+            "sirens": true
         },
         "sirens": {
             "siren1": {
