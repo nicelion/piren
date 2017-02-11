@@ -514,7 +514,7 @@ def add_siren():
         aux1 = dead
     else:
         if check_path(aux1):
-            aux1 = dead
+            pass
 
         else:
             print("'" + yelp + "' is not a valid path. Please be sure to add the sound files first, then use this program"
