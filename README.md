@@ -14,6 +14,7 @@ Turn your Raspberry Pi into a siren box for your car! Featuring sirens from Whel
     * [Getting Piren to run when the Pi is booted](#getting-piren-to-run-when-the-pi-is-booted)
     * [Circuitry](#circuitry)
 * [piren-config](#piren-config)
+   * [Adding your own horns and sirens](#adding-your-own-horns-and-sirens)
 * [Sirens](#sirens)
 
 
@@ -172,6 +173,8 @@ piren-config is a python script that allows you to easily add more sirens and ho
 
 ### How To Run
 First, change into the piren directory. Then type `sudo python3 piren-config.py` and piren-config will run.
+
+### How to add your own horns and sirens
 
 ## Sirens
 
