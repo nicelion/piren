@@ -174,7 +174,7 @@ piren-config is a python script that allows you to easily add more sirens and ho
 ### How To Run
 First, change into the piren directory. Then type `sudo python3 piren-config.py` and piren-config will run.
 
-### How to add your own horns and sirens
+### Adding your own horns and sirens
 
 ## Sirens
 
