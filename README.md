@@ -13,7 +13,7 @@ Turn your Raspberry Pi into a siren box for your car! Featuring sirens from Whel
 * [Setup](#setup)
     * [Getting Piren to run when the Pi is booted](#getting-piren-to-run-when-the-pi-is-booted)
     * [Circuitry](#circuitry)
-    * [PCB](www.github.com/nicelion/piren-board)
+    * [PCB](https://github.com/nicelion/piren-board)
 * [piren-config](#piren-config)
    * [Adding your own horns and sirens](#adding-your-own-horns-and-sirens)
 * [Sirens](#sirens)
