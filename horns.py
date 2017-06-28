@@ -41,3 +41,23 @@ def train_horn():
 
 def horn():
     return 'horns/genericgrover.wav'
+
+class Reveille:
+    def short():
+        return 'horns/reveille-short.wav'
+    def full():
+        return 'horns/reveille-full.wav'
+
+class Clemson:
+    def almamater():
+        return "horns/Clemson Alma Mater.wav"
+    def ragedefencecheer():
+        return 'horns/Rage Defense Cheer.wav'
+    def sockittoem():
+        return 'horns/Sock It To Em - Orange Bowl March.wav'
+    def tigerrag():
+        return 'horns/tigerrag.wav'
+
+class America:
+    def anthem():
+        return "horns/national-anthem.wav"
