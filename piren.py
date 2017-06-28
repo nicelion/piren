@@ -43,7 +43,7 @@ galls_model = deque([1, 0])
 whelen_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 feniex_model = deque([1, 0])
 other_model = deque([1, 0, 0, 0, 0, 0, 0, 0])
-horns_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+horns_model = deque([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
 auxiliary = False
 
@@ -188,6 +188,10 @@ def set_wail():  # Sets what siren will be used for wail.
             return horns.train_horn()
         if horns_model[10] == 1:
             return horns.horn()
+        if horns_model[11] == 1:
+            return horns.Reveille.full()
+        if horns_model[12] == 1:
+            return horns.Clemson.tigerrag()
 
 
 
@@ -303,6 +307,10 @@ def set_horn():  # Sets which sound will be used for the horn.
             return horns.train_horn()
         if horns_model[10] == 1:
             return horns.horn()
+        if horns_model[11] == 1:
+            return horns.Reveille.short()
+        if horns_model[12] == 1:
+            return horns.Clemson.almamater()
 
 
 def set_yelp():  # Sets which sound will be used for yelp
@@ -397,7 +405,11 @@ def set_yelp():  # Sets which sound will be used for yelp
         else:
             return dead
     if brand_name == HORNS:
-        return dead
+
+        if horns_model[12] == 1:
+            return horns.Clemson.ragedefencecheer()
+        else:
+            return dead
 
 
 def set_phaser():  # Sets which sound will be used for the phaser
@@ -491,7 +503,10 @@ def set_phaser():  # Sets which sound will be used for the phaser
             return dead
 
     if brand_name == HORNS:
-        return dead
+        if horns_model[12] == 1:
+            return horns.Clemson.sockittoem()
+        else:
+            return dead
 
 
 def set_aux1():  # Sets what sound, if any, will be used as an auxillary sound. See below.
@@ -704,7 +719,7 @@ def set_lcd():
     elif brand_name == OTHER:
         display.lcd_display_string('     Other', 1)
     elif brand_name == HORNS:
-        display.lcd_display_string('     Horns', 1)
+            display.lcd_display_string('     Horns', 1)
 
     if brand_name == CODE_3:
         if code_3_model[0] == 1:
@@ -824,7 +839,10 @@ def set_lcd():
              display.lcd_display_string('  Train Horn', 2)
         if horns_model[10] == 1:
              display.lcd_display_string('      Horn', 2)
-
+        if horns_model[11] == 1:
+            display.lcd_display_string("    Reveille    ", 2)
+        if horns_model[12] == 1:
+            display.lcd_display_string("Clemson", 2)
 
 
 
