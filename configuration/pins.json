@@ -1,0 +1,14 @@
+{
+    "aux": 26,
+    "aux_led": 20,
+    "horn": 24,
+    "manual_wail": 27,
+    "next": 17,
+    "next_brand": 11,
+    "phaser": 18,
+    "prev_brand": 8,
+    "previous": 9,
+    "siren_led": 12,
+    "wail": 23,
+    "yelp": 5
+}
